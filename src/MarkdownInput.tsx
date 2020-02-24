@@ -1,14 +1,37 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, StyleSheet } from 'react-native';
 
 import { MarkdownInputProps } from './componentTypes';
+//@ts-ignore
+// eslint-disable-next-line import/no-unresolved
+import Toolbar from './Toolbar';
 
-const MarkdownInput = ({ testID = 'markdownInput' }: MarkdownInputProps) => {
+const MarkdownInput = ({
+  testID = 'markdownInput',
+  inputAccessoryViewID,
+  style,
+}: MarkdownInputProps) => {
   return (
     <>
-      <TextInput multiline testID={testID} />
+      <TextInput
+        inputAccessoryViewID={inputAccessoryViewID}
+        multiline
+        onFocus={() => {}}
+        style={[styles.inputStyle, style]}
+        testID={testID}
+      />
+      <Toolbar nativeID={inputAccessoryViewID} testID="toolbar" />
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  inputStyle: {
+    borderColor: '#000',
+    borderWidth: 1,
+    minHeight: 100,
+    width: 300,
+  },
+});
 
 export default MarkdownInput;
