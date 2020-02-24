@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { TextInput } from 'react-native';
 
-const MarkdownInput = () => {
+import { MarkdownInputProps } from './componentTypes';
+
+const MarkdownInput = ({ testID = 'markdownInput' }: MarkdownInputProps) => {
   return (
-    <View>
-      <Text>TEST</Text>
-    </View>
+    <>
+      <TextInput multiline testID={testID} />
+    </>
   );
 };
 
