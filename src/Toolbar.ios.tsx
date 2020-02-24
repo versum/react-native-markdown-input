@@ -16,7 +16,11 @@ const CONTROLS = [
 const Toolbar = ({ nativeID }: ToolbarProps) => {
   return (
     <InputAccessoryView nativeID={nativeID}>
-      <ScrollView horizontal keyboardShouldPersistTaps="always">
+      <ScrollView
+        horizontal
+        keyboardShouldPersistTaps="always"
+        showsHorizontalScrollIndicator={false}
+      >
         {CONTROLS.map(item => (
           <ToolbarItem controlName={item} key={item} testID={`${item}Item`} />
         ))}
