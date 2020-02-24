@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
-import { MarkdownInputProps } from './componentTypes';
+import { MarkdownInputProps } from '../componentTypes';
 //@ts-ignore
 // eslint-disable-next-line import/no-unresolved
 import Toolbar from './Toolbar';

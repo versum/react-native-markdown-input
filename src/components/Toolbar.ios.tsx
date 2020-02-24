@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputAccessoryView, ScrollView } from 'react-native';
 
-import { ToolbarProps } from './componentTypes';
+import { ToolbarProps } from '../componentTypes';
 import ToolbarItem from './ToolbarItem';
 
 const CONTROLS = [
