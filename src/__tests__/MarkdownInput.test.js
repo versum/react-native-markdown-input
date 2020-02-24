@@ -6,7 +6,7 @@ import {
   waitForElement,
 } from 'react-native-testing-library';
 
-import MarkdownInput from '../MarkdownInput';
+import MarkdownInput from '../components/MarkdownInput';
 
 describe('MarkdownInput', () => {
   test('should render multiline input', () => {

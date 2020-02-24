@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import { ToolbarItemProps } from './componentTypes';
+import { ToolbarItemProps } from '../componentTypes';
 
 const ToolbarItem = ({ controlName }: ToolbarItemProps) => {
   return (
