@@ -10,21 +10,19 @@ import MarkdownInput from '../components/MarkdownInput';
 
 describe('MarkdownInput', () => {
   test('should render multiline input', () => {
-    const { getByTestId } = render(
-      <MarkdownInput inputAccessoryViewID="testInput" />
-    );
+    const { getByTestId } = render(<MarkdownInput testID="markdownInput" />);
 
-    expect(getByTestId('markdownInput')).not.toBeNull();
-    expect(getByTestId('markdownInput').props.multiline).toBe(true);
+    expect(getByTestId('markdownInputComponent')).not.toBeNull();
+    expect(getByTestId('markdownInputComponent').props.multiline).toBe(true);
   });
 
   test('should render toolbar when keyboard is visible', async () => {
     const { getByTestId, queryByTestId } = render(
-      <MarkdownInput inputAccessoryViewID="testInput" />
+      <MarkdownInput testID="markdownInput" />
     );
 
     await act(async () => {
-      fireEvent(getByTestId('markdownInput'), 'focus');
+      fireEvent(getByTestId('markdownInputComponent'), 'focus');
       await waitForElement(() => getByTestId('toolbar'));
     });
 
@@ -33,11 +31,11 @@ describe('MarkdownInput', () => {
 
   test('should render controls for markdown syntax', async () => {
     const { getByTestId, queryByTestId } = render(
-      <MarkdownInput inputAccessoryViewID="testInput" />
+      <MarkdownInput testID="markdownInput" />
     );
 
     await act(async () => {
-      fireEvent(getByTestId('markdownInput'), 'focus');
+      fireEvent(getByTestId('markdownInputComponent'), 'focus');
       await waitForElement(() => getByTestId('toolbar'));
     });
 

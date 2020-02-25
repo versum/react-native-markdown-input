@@ -1,21 +1,12 @@
 import React from 'react';
 import { InputAccessoryView, ScrollView } from 'react-native';
 
-import { ToolbarProps } from '../componentTypes';
 import ToolbarItem from './ToolbarItem';
+import { CONTROLS, inputAccessoryViewID } from './MarkdownInput';
 
-const CONTROLS = [
-  'bold',
-  'italic',
-  'heading',
-  'link',
-  'orderedList',
-  'unorderedList',
-];
-
-const Toolbar = ({ nativeID }: ToolbarProps) => {
+const Toolbar = () => {
   return (
-    <InputAccessoryView nativeID={nativeID}>
+    <InputAccessoryView nativeID={inputAccessoryViewID}>
       <ScrollView
         horizontal
         keyboardShouldPersistTaps="always"

@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Keyboard, KeyboardEvent, StyleSheet } from 'react-native';
-import ToolbarItem from './ToolbarItem';
 
-const CONTROLS = [
-  'bold',
-  'italic',
-  'heading',
-  'link',
-  'orderedList',
-  'unorderedList',
-];
+import ToolbarItem from './ToolbarItem';
+import { CONTROLS } from './MarkdownInput';
 
 const Toolbar = () => {
-  const [{ isKeyboardVisible, keyboardHeight }, toggleKeyboard] = useState({
-    isKeyboardVisible: false,
-    keyboardHeight: 0,
-  });
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
   useEffect(() => {
     const keyboardShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -37,14 +27,14 @@ const Toolbar = () => {
     }
     const keyboardHeight = keyboardEvent.endCoordinates.height;
 
-    toggleKeyboard({ isKeyboardVisible: true, keyboardHeight });
+    setKeyboardHeight(keyboardHeight);
   };
 
   const handleKeyboardHide = () => {
-    toggleKeyboard({ isKeyboardVisible: false, keyboardHeight: 0 });
+    setKeyboardHeight(0);
   };
 
-  if (isKeyboardVisible) {
+  if (keyboardHeight !== 0) {
     return (
       <ScrollView
         horizontal

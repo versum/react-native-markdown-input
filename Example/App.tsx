@@ -7,7 +7,7 @@ import { MarkdownInput } from 'react-native-markdown-input';
 export default function App() {
   return (
     <View style={styles.container}>
-      <MarkdownInput inputAccessoryViewID="exampleInput" />
+      <MarkdownInput />
     </View>
   );
 }
