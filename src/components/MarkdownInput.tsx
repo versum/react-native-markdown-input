@@ -48,7 +48,11 @@ const MarkdownInput = ({
 
   const handleItemPress = (controlName: string) => {
     const formattedValue = textFormatter(controlName, value);
-    onChangeText(formattedValue);
+
+    // TODO:
+    if (formattedValue) {
+      onChangeText(formattedValue);
+    }
   };
 
   return (
