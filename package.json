@@ -19,7 +19,7 @@
     "bootstrap": "yarn example && yarn && cd example/ios && pod install"
   },
   "repository": "https://github.com/versum/react-native-markdown-input",
-  "author": "Michal Kantor <kantorm96@gmail.com>",
+  "author": "Michal Kantor <kantorm96@gmail.com>, Damian Sznajder <damsznajder@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

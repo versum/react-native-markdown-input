@@ -1,3 +1,3 @@
-export default (controlName: string, inputValue: string | undefined) => {
+export default (_controlName: string, inputValue: string | undefined) => {
   return inputValue;
 };
