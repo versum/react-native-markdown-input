@@ -63,6 +63,7 @@ const MarkdownInput = ({
         onBlur={handleBlur}
         onChangeText={onChangeText}
         onFocus={handleFocus}
+        onSelectionChange={console.log}
         style={[styles.inputStyle, style]}
         testID={`${testID}Component`}
         value={value}

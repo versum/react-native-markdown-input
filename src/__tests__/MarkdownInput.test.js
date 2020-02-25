@@ -9,6 +9,10 @@ import {
 import MarkdownInput from '../components/MarkdownInput';
 import * as textFormatter from '../helpers/textFormatter';
 
+const selectionChangeEvent = (start, stop) => ({
+  nativeEvent: { selection: { start, stop } },
+});
+
 describe('MarkdownInput', () => {
   test('should render multiline input', () => {
     const { getByTestId } = render(<MarkdownInput testID="markdownInput" />);
@@ -408,24 +412,178 @@ describe('MarkdownInput', () => {
     });
 
     describe('has selected text', () => {
-      test.todo(
-        'should add bold symbol when bold control is pressed',
-        async () => {}
-      );
+      test('should add bold symbol when bold control is pressed', async () => {
+        const { getByTestId, update } = render(
+          <MarkdownInput
+            onChangeText={changeText => {
+              inputValue = changeText;
+            }}
+            testID="markdownInput"
+            value="test text"
+          />
+        );
 
-      test.todo(
-        'should add italic symbol when bold control is pressed',
-        async () => {}
-      );
+        await act(async () => {
+          fireEvent(getByTestId('markdownInputComponent'), 'focus');
+          await waitForElement(() => getByTestId('toolbar'));
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(0, 4)
+          );
+
+          fireEvent.press(getByTestId('boldTouchable'));
+
+          update(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={inputValue}
+            />
+          );
+        });
+
+        expect(getByTestId('markdownInputComponent').props.value).toEqual(
+          '**test** text'
+        );
+
+        expect(getByTestId('markdownInputComponent').props.selection).toEqual({
+          start: 8,
+          end: 8,
+        });
+      });
+
+      test('should add italic symbol when bold control is pressed', async () => {
+        const { getByTestId, update } = render(
+          <MarkdownInput
+            onChangeText={changeText => {
+              inputValue = changeText;
+            }}
+            testID="markdownInput"
+            value="test text"
+          />
+        );
+
+        await act(async () => {
+          fireEvent(getByTestId('markdownInputComponent'), 'focus');
+          await waitForElement(() => getByTestId('toolbar'));
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(0, 4)
+          );
+
+          fireEvent.press(getByTestId('boldTouchable'));
+
+          update(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={inputValue}
+            />
+          );
+        });
+
+        expect(getByTestId('markdownInputComponent').props.value).toEqual(
+          '_test_ text'
+        );
+        expect(getByTestId('markdownInputComponent').props.selection).toEqual({
+          start: 6,
+          end: 6,
+        });
+      });
 
       test.todo(
         'should add heading symbol when bold control is pressed',
-        async () => {}
+        async () => {
+          const { getByTestId, update } = render(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value="test text"
+            />
+          );
+
+          await act(async () => {
+            fireEvent(getByTestId('markdownInputComponent'), 'focus');
+            await waitForElement(() => getByTestId('toolbar'));
+            fireEvent(
+              getByTestId('markdownInputComponent'),
+              'selectionChange',
+              selectionChangeEvent(0, 4)
+            );
+
+            fireEvent.press(getByTestId('headingTouchable'));
+
+            update(
+              <MarkdownInput
+                onChangeText={changeText => {
+                  inputValue = changeText;
+                }}
+                testID="markdownInput"
+                value={inputValue}
+              />
+            );
+          });
+
+          expect(getByTestId('markdownInputComponent').props.value).toEqual(
+            '#test text'
+          );
+        }
       );
 
       test.todo(
         'should add link symbol when bold control is pressed',
-        async () => {}
+        async () => {
+          const { getByTestId, update } = render(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value="test text"
+            />
+          );
+
+          await act(async () => {
+            fireEvent(getByTestId('markdownInputComponent'), 'focus');
+            await waitForElement(() => getByTestId('toolbar'));
+            fireEvent(
+              getByTestId('markdownInputComponent'),
+              'selectionChange',
+              selectionChangeEvent(0, 4)
+            );
+
+            fireEvent.press(getByTestId('linkTouchable'));
+
+            update(
+              <MarkdownInput
+                onChangeText={changeText => {
+                  inputValue = changeText;
+                }}
+                testID="markdownInput"
+                value={inputValue}
+              />
+            );
+          });
+
+          expect(getByTestId('markdownInputComponent').props.value).toEqual(
+            '[test]() text'
+          );
+
+          expect(getByTestId('markdownInputComponent').props.selection).toEqual(
+            {
+              start: 7,
+              end: 7,
+            }
+          );
+        }
       );
     });
   });
