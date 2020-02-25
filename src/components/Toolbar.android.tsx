@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Keyboard, KeyboardEvent, StyleSheet } from 'react-native';
 
+import { ToolbarProps } from '../componentTypes';
+
 import ToolbarItem from './ToolbarItem';
 import { CONTROLS } from './MarkdownInput';
 
-const Toolbar = () => {
+const Toolbar = ({ isFocused }: ToolbarProps) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
   useEffect(() => {
     const keyboardShowListener = Keyboard.addListener(
@@ -34,7 +36,7 @@ const Toolbar = () => {
     setKeyboardHeight(0);
   };
 
-  if (keyboardHeight !== 0) {
+  if (keyboardHeight !== 0 && isFocused) {
     return (
       <ScrollView
         horizontal

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
 import { MarkdownInputProps } from '../componentTypes';
@@ -21,16 +21,23 @@ const MarkdownInput = ({
   testID = 'markdownInput',
   style,
 }: MarkdownInputProps) => {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
     <>
       <TextInput
         inputAccessoryViewID={inputAccessoryViewID}
         multiline
-        onFocus={() => {}}
+        onBlur={() => setIsFocused(false)}
+        onFocus={() => setIsFocused(true)}
         style={[styles.inputStyle, style]}
         testID={`${testID}Component`}
       />
-      <Toolbar nativeID={inputAccessoryViewID} testID="toolbar" />
+      <Toolbar
+        isFocused={isFocused}
+        nativeID={inputAccessoryViewID}
+        testID="toolbar"
+      />
     </>
   );
 };

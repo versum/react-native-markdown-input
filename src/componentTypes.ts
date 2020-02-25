@@ -5,6 +5,7 @@ export type MarkdownInputProps = {
 
 export type ToolbarProps = {
   testID: string;
+  isFocused?: boolean;
 };
 
 export type ToolbarItemProps = {
