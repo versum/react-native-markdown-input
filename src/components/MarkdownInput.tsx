@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   TextInput,
   StyleSheet,
   NativeSyntheticEvent,
   TextInputFocusEventData,
+  TextInputSelectionChangeEventData,
 } from 'react-native';
 
 import { MarkdownInputProps } from '../componentTypes';
@@ -33,6 +34,10 @@ const MarkdownInput = ({
   ...restProps
 }: MarkdownInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
+  const selection = useRef<{ start: number; end: number }>({
+    start: 0,
+    end: 0,
+  });
 
   const handleFocus = (
     event: NativeSyntheticEvent<TextInputFocusEventData>
@@ -55,6 +60,12 @@ const MarkdownInput = ({
     }
   };
 
+  const handleSelectionChange = (
+    event: NativeSyntheticEvent<TextInputSelectionChangeEventData>
+  ) => {
+    selection.current = event.nativeEvent.selection;
+  };
+
   return (
     <>
       <TextInput
@@ -63,12 +74,13 @@ const MarkdownInput = ({
         onBlur={handleBlur}
         onChangeText={onChangeText}
         onFocus={handleFocus}
-        onSelectionChange={console.log}
+        onSelectionChange={handleSelectionChange}
         style={[styles.inputStyle, style]}
         testID={`${testID}Component`}
         value={value}
         {...restProps}
       />
+
       <Toolbar
         handleItemPress={handleItemPress}
         isFocused={isFocused}

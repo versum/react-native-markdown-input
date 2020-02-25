@@ -4,6 +4,7 @@ enum MarkdownSymbols {
   link = '[]()',
   heading = '#',
 }
+
 export default (controlName: string, inputValue: string = '') => {
   switch (controlName) {
     case 'bold': {
