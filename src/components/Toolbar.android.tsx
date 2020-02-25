@@ -6,7 +6,7 @@ import { ToolbarProps } from '../componentTypes';
 import ToolbarItem from './ToolbarItem';
 import { CONTROLS } from './MarkdownInput';
 
-const Toolbar = ({ isFocused }: ToolbarProps) => {
+const Toolbar = ({ isFocused, handleItemPress }: ToolbarProps) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
   useEffect(() => {
     const keyboardShowListener = Keyboard.addListener(
@@ -45,7 +45,12 @@ const Toolbar = ({ isFocused }: ToolbarProps) => {
         style={[styles.container, { bottom: keyboardHeight }]}
       >
         {CONTROLS.map(item => (
-          <ToolbarItem controlName={item} key={item} testID={`${item}Item`} />
+          <ToolbarItem
+            controlName={item}
+            handleItemPress={handleItemPress}
+            key={item}
+            testID={`${item}Item`}
+          />
         ))}
       </ScrollView>
     );

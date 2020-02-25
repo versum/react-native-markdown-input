@@ -3,9 +3,13 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { ToolbarItemProps } from '../componentTypes';
 
-const ToolbarItem = ({ controlName }: ToolbarItemProps) => {
+const ToolbarItem = ({ controlName, handleItemPress }: ToolbarItemProps) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      onPress={() => handleItemPress(controlName)}
+      style={styles.container}
+      testID={`${controlName}Touchable`}
+    >
       <Text>{controlName}</Text>
     </TouchableOpacity>
   );

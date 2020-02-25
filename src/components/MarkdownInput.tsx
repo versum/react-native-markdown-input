@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import { MarkdownInputProps } from '../componentTypes';
+import textFormatter from '../helpers/textFormatter';
 //@ts-ignore
 // eslint-disable-next-line import/no-unresolved
 import Toolbar from './Toolbar';
@@ -45,6 +46,11 @@ const MarkdownInput = ({
     typeof onBlur === 'function' && onBlur(event);
   };
 
+  const handleItemPress = (controlName: string) => {
+    const formattedValue = textFormatter(controlName, value);
+    onChangeText(formattedValue);
+  };
+
   return (
     <>
       <TextInput
@@ -59,6 +65,7 @@ const MarkdownInput = ({
         {...restProps}
       />
       <Toolbar
+        handleItemPress={handleItemPress}
         isFocused={isFocused}
         nativeID={inputAccessoryViewID}
         testID="toolbar"
