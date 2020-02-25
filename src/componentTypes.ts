@@ -1,4 +1,6 @@
-export type MarkdownInputProps = {
+import { TextInputProps } from 'react-native';
+
+export type MarkdownInputProps = TextInputProps & {
   testID?: string;
   style?: FixMe;
 };
