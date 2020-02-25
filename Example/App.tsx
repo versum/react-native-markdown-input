@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 
 // @ts-ignore
 import { MarkdownInput } from 'react-native-markdown-input';
 
 export default function App() {
+  const [inputValue, setInputValue] = useState();
+
   return (
     <View style={styles.container}>
-      <MarkdownInput />
+      <MarkdownInput onChangeText={setInputValue} value={inputValue} />
 
       <TextInput
         placeholder="Different Input without accessory view"
