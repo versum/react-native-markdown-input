@@ -7,7 +7,6 @@ import {
 } from 'react-native-testing-library';
 
 import MarkdownInput from '../components/MarkdownInput';
-import * as textFormatter from '../helpers/textFormatter';
 
 const selectionChangeEvent = (start, stop) => ({
   nativeEvent: { selection: { start, stop } },
@@ -59,9 +58,9 @@ describe('MarkdownInput', () => {
   });
 
   test('should handle press on control in toolbar', async () => {
-    textFormatter.default = jest.fn();
-
-    const { getByTestId } = render(<MarkdownInput testID="markdownInput" />);
+    const { getByTestId } = render(
+      <MarkdownInput onChangeText={jest.fn()} testID="markdownInput" />
+    );
 
     await act(async () => {
       fireEvent(getByTestId('markdownInputComponent'), 'focus');
@@ -69,7 +68,9 @@ describe('MarkdownInput', () => {
       fireEvent.press(getByTestId('boldTouchable'));
     });
 
-    expect(textFormatter.default).toHaveBeenCalledWith('bold', undefined);
+    expect(
+      getByTestId('markdownInputComponent').props.onChangeText
+    ).toHaveBeenCalledWith('****');
   });
 
   describe('On toolbar item press', () => {
@@ -455,7 +456,7 @@ describe('MarkdownInput', () => {
         });
       });
 
-      test('should add italic symbol when bold control is pressed', async () => {
+      test('should add italic symbol when italic control is pressed', async () => {
         const { getByTestId, update } = render(
           <MarkdownInput
             onChangeText={changeText => {
@@ -475,7 +476,7 @@ describe('MarkdownInput', () => {
             selectionChangeEvent(0, 4)
           );
 
-          fireEvent.press(getByTestId('boldTouchable'));
+          fireEvent.press(getByTestId('italicTouchable'));
 
           update(
             <MarkdownInput
@@ -497,94 +498,87 @@ describe('MarkdownInput', () => {
         });
       });
 
-      test.todo(
-        'should add heading symbol when bold control is pressed',
-        async () => {
-          const { getByTestId, update } = render(
+      // eslint-disable-next-line jest/no-disabled-tests
+      test.skip('should add heading symbol when heading control is pressed', async () => {
+        const { getByTestId, update } = render(
+          <MarkdownInput
+            onChangeText={changeText => {
+              inputValue = changeText;
+            }}
+            testID="markdownInput"
+            value="test text"
+          />
+        );
+
+        await act(async () => {
+          fireEvent(getByTestId('markdownInputComponent'), 'focus');
+          await waitForElement(() => getByTestId('toolbar'));
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(0, 4)
+          );
+
+          fireEvent.press(getByTestId('headingTouchable'));
+
+          update(
             <MarkdownInput
               onChangeText={changeText => {
                 inputValue = changeText;
               }}
               testID="markdownInput"
-              value="test text"
+              value={inputValue}
             />
           );
+        });
 
-          await act(async () => {
-            fireEvent(getByTestId('markdownInputComponent'), 'focus');
-            await waitForElement(() => getByTestId('toolbar'));
-            fireEvent(
-              getByTestId('markdownInputComponent'),
-              'selectionChange',
-              selectionChangeEvent(0, 4)
-            );
+        expect(getByTestId('markdownInputComponent').props.value).toEqual(
+          '#test text'
+        );
+      });
 
-            fireEvent.press(getByTestId('headingTouchable'));
+      test('should add link symbol when link control is pressed', async () => {
+        const { getByTestId, update } = render(
+          <MarkdownInput
+            onChangeText={changeText => {
+              inputValue = changeText;
+            }}
+            testID="markdownInput"
+            value="test text"
+          />
+        );
 
-            update(
-              <MarkdownInput
-                onChangeText={changeText => {
-                  inputValue = changeText;
-                }}
-                testID="markdownInput"
-                value={inputValue}
-              />
-            );
-          });
-
-          expect(getByTestId('markdownInputComponent').props.value).toEqual(
-            '#test text'
+        await act(async () => {
+          fireEvent(getByTestId('markdownInputComponent'), 'focus');
+          await waitForElement(() => getByTestId('toolbar'));
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(0, 4)
           );
-        }
-      );
 
-      test.todo(
-        'should add link symbol when bold control is pressed',
-        async () => {
-          const { getByTestId, update } = render(
+          fireEvent.press(getByTestId('linkTouchable'));
+
+          update(
             <MarkdownInput
               onChangeText={changeText => {
                 inputValue = changeText;
               }}
               testID="markdownInput"
-              value="test text"
+              value={inputValue}
             />
           );
+        });
 
-          await act(async () => {
-            fireEvent(getByTestId('markdownInputComponent'), 'focus');
-            await waitForElement(() => getByTestId('toolbar'));
-            fireEvent(
-              getByTestId('markdownInputComponent'),
-              'selectionChange',
-              selectionChangeEvent(0, 4)
-            );
+        expect(getByTestId('markdownInputComponent').props.value).toEqual(
+          '[test]() text'
+        );
 
-            fireEvent.press(getByTestId('linkTouchable'));
-
-            update(
-              <MarkdownInput
-                onChangeText={changeText => {
-                  inputValue = changeText;
-                }}
-                testID="markdownInput"
-                value={inputValue}
-              />
-            );
-          });
-
-          expect(getByTestId('markdownInputComponent').props.value).toEqual(
-            '[test]() text'
-          );
-
-          expect(getByTestId('markdownInputComponent').props.selection).toEqual(
-            {
-              start: 7,
-              end: 7,
-            }
-          );
-        }
-      );
+        expect(getByTestId('markdownInputComponent').props.selection).toEqual({
+          start: 7,
+          end: 7,
+        });
+      });
     });
   });
 });
