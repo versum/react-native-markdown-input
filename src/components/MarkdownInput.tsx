@@ -6,9 +6,19 @@ import { MarkdownInputProps } from '../componentTypes';
 // eslint-disable-next-line import/no-unresolved
 import Toolbar from './Toolbar';
 
+export const CONTROLS = [
+  'bold',
+  'italic',
+  'heading',
+  'link',
+  'orderedList',
+  'unorderedList',
+] as const;
+
+export const inputAccessoryViewID = 'markdownInputAccessoryId';
+
 const MarkdownInput = ({
   testID = 'markdownInput',
-  inputAccessoryViewID,
   style,
 }: MarkdownInputProps) => {
   return (
@@ -18,7 +28,7 @@ const MarkdownInput = ({
         multiline
         onFocus={() => {}}
         style={[styles.inputStyle, style]}
-        testID={testID}
+        testID={`${testID}Component`}
       />
       <Toolbar nativeID={inputAccessoryViewID} testID="toolbar" />
     </>
