@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   TextInput,
   StyleSheet,
@@ -34,6 +34,7 @@ const MarkdownInput = ({
   ...restProps
 }: MarkdownInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<TextInput>(null);
   const selection = useRef<{ start: number; end: number }>({
     start: 0,
     end: 0,
@@ -46,21 +47,34 @@ const MarkdownInput = ({
     typeof onFocus === 'function' && onFocus(event);
   };
 
+  useEffect(() => {
+    inputRef.current!.setNativeProps({
+      selection: selection.current,
+    });
+  }, [value]);
+
   const handleBlur = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
     setIsFocused(false);
     typeof onBlur === 'function' && onBlur(event);
   };
 
   const handleItemPress = (controlName: string) => {
-    const formattedValue = textFormatter(controlName, value);
+    const { formattedValue, newSelection } = textFormatter({
+      controlName,
+      inputValue: value,
+      selection: selection.current,
+    });
+    selection.current = newSelection;
 
     onChangeText(formattedValue);
   };
 
-  const handleSelectionChange = (
-    event: NativeSyntheticEvent<TextInputSelectionChangeEventData>
-  ) => {
-    selection.current = event.nativeEvent.selection;
+  const handleSelectionChange = ({
+    nativeEvent: {
+      selection: { start, end },
+    },
+  }: NativeSyntheticEvent<TextInputSelectionChangeEventData>) => {
+    selection.current = { start, end };
   };
 
   return (
@@ -72,6 +86,7 @@ const MarkdownInput = ({
         onChangeText={onChangeText}
         onFocus={handleFocus}
         onSelectionChange={handleSelectionChange}
+        ref={inputRef}
         style={[styles.inputStyle, style]}
         testID={`${testID}Component`}
         value={value}
