@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "test": "jest --coverage --runInBand",
+    "test:watch": "jest --watch",
     "typescript": "tsc --noEmit",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prepare": "bob build",
