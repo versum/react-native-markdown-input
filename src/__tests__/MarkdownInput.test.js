@@ -240,6 +240,7 @@ describe('MarkdownInput', () => {
           end: 10,
         });
       });
+
       test('should add heading symbol on heading controll press', async () => {
         const { getByTestId, update } = render(
           <MarkdownInput
@@ -294,6 +295,28 @@ describe('MarkdownInput', () => {
           end: 10,
         });
       });
+    });
+
+    describe('has selected text', () => {
+      test.todo(
+        'should add bold symbol when bold control is pressed',
+        async () => {}
+      );
+
+      test.todo(
+        'should add italic symbol when bold control is pressed',
+        async () => {}
+      );
+
+      test.todo(
+        'should add heading symbol when bold control is pressed',
+        async () => {}
+      );
+
+      test.todo(
+        'should add link symbol when bold control is pressed',
+        async () => {}
+      );
     });
   });
 });
