@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { TextInput, StyleSheet } from 'react-native';
+import {
+  TextInput,
+  StyleSheet,
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
+} from 'react-native';
 
 import { MarkdownInputProps } from '../componentTypes';
 //@ts-ignore
@@ -20,18 +25,38 @@ export const inputAccessoryViewID = 'markdownInputAccessoryId';
 const MarkdownInput = ({
   testID = 'markdownInput',
   style,
+  onFocus,
+  onBlur,
+  onChangeText,
+  value,
+  ...restProps
 }: MarkdownInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = (
+    event: NativeSyntheticEvent<TextInputFocusEventData>
+  ) => {
+    setIsFocused(true);
+    typeof onFocus === 'function' && onFocus(event);
+  };
+
+  const handleBlur = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    setIsFocused(false);
+    typeof onBlur === 'function' && onBlur(event);
+  };
 
   return (
     <>
       <TextInput
         inputAccessoryViewID={inputAccessoryViewID}
         multiline
-        onBlur={() => setIsFocused(false)}
-        onFocus={() => setIsFocused(true)}
+        onBlur={handleBlur}
+        onChangeText={onChangeText}
+        onFocus={handleFocus}
         style={[styles.inputStyle, style]}
         testID={`${testID}Component`}
+        value={value}
+        {...restProps}
       />
       <Toolbar
         isFocused={isFocused}
