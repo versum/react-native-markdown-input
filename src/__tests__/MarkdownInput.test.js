@@ -14,7 +14,9 @@ const selectionChangeEvent = (start, end) => ({
 
 describe('MarkdownInput', () => {
   test('should render multiline input', () => {
-    const { getByTestId } = render(<MarkdownInput testID="markdownInput" />);
+    const { getByTestId } = render(
+      <MarkdownInput onChangeText={jest.fn()} testID="markdownInput" />
+    );
 
     expect(getByTestId('markdownInputComponent')).not.toBeNull();
     expect(getByTestId('markdownInputComponent').props.multiline).toBe(true);
@@ -22,7 +24,7 @@ describe('MarkdownInput', () => {
 
   test('should render toolbar when keyboard is visible', async () => {
     const { getByTestId, queryByTestId } = render(
-      <MarkdownInput testID="markdownInput" />
+      <MarkdownInput onChangeText={jest.fn()} testID="markdownInput" />
     );
 
     await act(async () => {
@@ -35,7 +37,7 @@ describe('MarkdownInput', () => {
 
   test('should render controls for markdown syntax', async () => {
     const { getByTestId, queryByTestId } = render(
-      <MarkdownInput testID="markdownInput" />
+      <MarkdownInput onChangeText={jest.fn()} testID="markdownInput" />
     );
 
     await act(async () => {
@@ -334,10 +336,6 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           '- test text'
         );
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 10,
-        //   end: 10,
-        // });
       });
 
       test('should add ordered list element symbol on ordered list control press', async () => {
@@ -389,10 +387,122 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           '1. test text'
         );
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 10,
-        //   end: 10,
-        // });
+      });
+
+      describe('on value with new line symbol', () => {
+        test('should add ordered list symbol at the beginning of line when ordered list control is pressed', async () => {
+          const { getByTestId, update } = render(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={`test text\nsecond line`}
+            />
+          );
+
+          await act(async () => {
+            fireEvent(getByTestId('markdownInputComponent'), 'focus');
+            await waitForElement(() => getByTestId('toolbar'));
+            fireEvent(
+              getByTestId('markdownInputComponent'),
+              'selectionChange',
+              selectionChangeEvent(11, 11)
+            );
+
+            fireEvent.press(getByTestId('orderedListTouchable'));
+
+            update(
+              <MarkdownInput
+                onChangeText={changeText => {
+                  inputValue = changeText;
+                }}
+                testID="markdownInput"
+                value={inputValue}
+              />
+            );
+          });
+
+          expect(getByTestId('markdownInputComponent').props.value).toEqual(
+            'test text\n1. second line'
+          );
+        });
+
+        test('should add unordered list symbol at the beginning of line when unordered list control is pressed', async () => {
+          const { getByTestId, update } = render(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={`test text\nsecond line`}
+            />
+          );
+
+          await act(async () => {
+            fireEvent(getByTestId('markdownInputComponent'), 'focus');
+            await waitForElement(() => getByTestId('toolbar'));
+            fireEvent(
+              getByTestId('markdownInputComponent'),
+              'selectionChange',
+              selectionChangeEvent(11, 11)
+            );
+
+            fireEvent.press(getByTestId('unorderedListTouchable'));
+
+            update(
+              <MarkdownInput
+                onChangeText={changeText => {
+                  inputValue = changeText;
+                }}
+                testID="markdownInput"
+                value={inputValue}
+              />
+            );
+          });
+
+          expect(getByTestId('markdownInputComponent').props.value).toEqual(
+            'test text\n- second line'
+          );
+        });
+
+        test('should add heading symbol at the beginning of line when heading control is pressed', async () => {
+          const { getByTestId, update } = render(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={`test text\nsecond line`}
+            />
+          );
+
+          await act(async () => {
+            fireEvent(getByTestId('markdownInputComponent'), 'focus');
+            await waitForElement(() => getByTestId('toolbar'));
+            fireEvent(
+              getByTestId('markdownInputComponent'),
+              'selectionChange',
+              selectionChangeEvent(11, 11)
+            );
+
+            fireEvent.press(getByTestId('headingTouchable'));
+
+            update(
+              <MarkdownInput
+                onChangeText={changeText => {
+                  inputValue = changeText;
+                }}
+                testID="markdownInput"
+                value={inputValue}
+              />
+            );
+          });
+
+          expect(getByTestId('markdownInputComponent').props.value).toEqual(
+            'test text\n#second line'
+          );
+        });
       });
     });
 
@@ -548,82 +658,198 @@ describe('MarkdownInput', () => {
           '[test]() text'
         );
       });
-    });
 
-    test('should add unordered list symbol when unordered list control is pressed', async () => {
-      const { getByTestId, update } = render(
-        <MarkdownInput
-          onChangeText={changeText => {
-            inputValue = changeText;
-          }}
-          testID="markdownInput"
-          value="test text"
-        />
-      );
-
-      await act(async () => {
-        fireEvent(getByTestId('markdownInputComponent'), 'focus');
-        await waitForElement(() => getByTestId('toolbar'));
-        fireEvent(
-          getByTestId('markdownInputComponent'),
-          'selectionChange',
-          selectionChangeEvent(0, 4)
-        );
-
-        fireEvent.press(getByTestId('unorderedListTouchable'));
-
-        update(
+      test('should add unordered list symbol when unordered list control is pressed', async () => {
+        const { getByTestId, update } = render(
           <MarkdownInput
             onChangeText={changeText => {
               inputValue = changeText;
             }}
             testID="markdownInput"
-            value={inputValue}
+            value="test text"
           />
+        );
+
+        await act(async () => {
+          fireEvent(getByTestId('markdownInputComponent'), 'focus');
+          await waitForElement(() => getByTestId('toolbar'));
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(0, 4)
+          );
+
+          fireEvent.press(getByTestId('unorderedListTouchable'));
+
+          update(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={inputValue}
+            />
+          );
+        });
+
+        expect(getByTestId('markdownInputComponent').props.value).toEqual(
+          '- test text'
         );
       });
 
-      expect(getByTestId('markdownInputComponent').props.value).toEqual(
-        '- test text'
-      );
-    });
-
-    test('should add ordered list symbol when ordered list control is pressed', async () => {
-      const { getByTestId, update } = render(
-        <MarkdownInput
-          onChangeText={changeText => {
-            inputValue = changeText;
-          }}
-          testID="markdownInput"
-          value="test text"
-        />
-      );
-
-      await act(async () => {
-        fireEvent(getByTestId('markdownInputComponent'), 'focus');
-        await waitForElement(() => getByTestId('toolbar'));
-        fireEvent(
-          getByTestId('markdownInputComponent'),
-          'selectionChange',
-          selectionChangeEvent(0, 4)
-        );
-
-        fireEvent.press(getByTestId('orderedListTouchable'));
-
-        update(
+      test('should add ordered list symbol when ordered list control is pressed', async () => {
+        const { getByTestId, update } = render(
           <MarkdownInput
             onChangeText={changeText => {
               inputValue = changeText;
             }}
             testID="markdownInput"
-            value={inputValue}
+            value="test text"
           />
+        );
+
+        await act(async () => {
+          fireEvent(getByTestId('markdownInputComponent'), 'focus');
+          await waitForElement(() => getByTestId('toolbar'));
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(0, 4)
+          );
+
+          fireEvent.press(getByTestId('orderedListTouchable'));
+
+          update(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={inputValue}
+            />
+          );
+        });
+
+        expect(getByTestId('markdownInputComponent').props.value).toEqual(
+          '1. test text'
         );
       });
 
-      expect(getByTestId('markdownInputComponent').props.value).toEqual(
-        '1. test text'
-      );
+      describe('on value with new line symbol', () => {
+        test('should add ordered list symbol at the beginning of selected line when ordered list control is pressed', async () => {
+          const { getByTestId, update } = render(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={`test text\nsecond line`}
+            />
+          );
+
+          await act(async () => {
+            fireEvent(getByTestId('markdownInputComponent'), 'focus');
+            await waitForElement(() => getByTestId('toolbar'));
+            fireEvent(
+              getByTestId('markdownInputComponent'),
+              'selectionChange',
+              selectionChangeEvent(11, 12)
+            );
+
+            fireEvent.press(getByTestId('orderedListTouchable'));
+
+            update(
+              <MarkdownInput
+                onChangeText={changeText => {
+                  inputValue = changeText;
+                }}
+                testID="markdownInput"
+                value={inputValue}
+              />
+            );
+          });
+
+          expect(getByTestId('markdownInputComponent').props.value).toEqual(
+            'test text\n1. second line'
+          );
+        });
+
+        test('should add unordered list symbol at the beginning of selected line when unordered list control is pressed', async () => {
+          const { getByTestId, update } = render(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={`test text\nsecond line`}
+            />
+          );
+
+          await act(async () => {
+            fireEvent(getByTestId('markdownInputComponent'), 'focus');
+            await waitForElement(() => getByTestId('toolbar'));
+            fireEvent(
+              getByTestId('markdownInputComponent'),
+              'selectionChange',
+              selectionChangeEvent(11, 12)
+            );
+
+            fireEvent.press(getByTestId('unorderedListTouchable'));
+
+            update(
+              <MarkdownInput
+                onChangeText={changeText => {
+                  inputValue = changeText;
+                }}
+                testID="markdownInput"
+                value={inputValue}
+              />
+            );
+          });
+
+          expect(getByTestId('markdownInputComponent').props.value).toEqual(
+            'test text\n- second line'
+          );
+        });
+
+        test('should add heading symbol at the beginning of selected line when heading control is pressed', async () => {
+          const { getByTestId, update } = render(
+            <MarkdownInput
+              onChangeText={changeText => {
+                inputValue = changeText;
+              }}
+              testID="markdownInput"
+              value={`test text\nsecond line`}
+            />
+          );
+
+          await act(async () => {
+            fireEvent(getByTestId('markdownInputComponent'), 'focus');
+            await waitForElement(() => getByTestId('toolbar'));
+            fireEvent(
+              getByTestId('markdownInputComponent'),
+              'selectionChange',
+              selectionChangeEvent(11, 12)
+            );
+
+            fireEvent.press(getByTestId('headingTouchable'));
+
+            update(
+              <MarkdownInput
+                onChangeText={changeText => {
+                  inputValue = changeText;
+                }}
+                testID="markdownInput"
+                value={inputValue}
+              />
+            );
+          });
+
+          expect(getByTestId('markdownInputComponent').props.value).toEqual(
+            'test text\n#second line'
+          );
+        });
+      });
     });
   });
 });

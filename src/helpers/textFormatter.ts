@@ -34,7 +34,7 @@ const formatValue = ({
     case 'orderedList':
     case 'unorderedList':
     case 'heading': {
-      return addPrefix({ inputValue, controlName });
+      return addPrefix({ inputValue, controlName, selection });
     }
 
     default: {
