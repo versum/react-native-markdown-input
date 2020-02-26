@@ -1,6 +1,6 @@
 {
   "name": "@versum/react-native-markdown-input",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Markdown input for React Native",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -11,13 +11,14 @@
     "lib"
   ],
   "scripts": {
-    "test": "jest --coverage --runInBand",
-    "test:watch": "jest --watch",
-    "typescript": "tsc --noEmit",
+    "bootstrap": "yarn example && yarn && cd example/ios && pod install",
+    "example": "yarn --cwd example",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prepare": "bob build",
-    "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn && cd example/ios && pod install"
+    "release": "release-it",
+    "test": "jest --coverage --runInBand",
+    "test:watch": "jest --watch",
+    "typescript": "tsc --noEmit"
   },
   "repository": "https://github.com/versum/react-native-markdown-input",
   "author": "Michal Kantor <kantorm96@gmail.com>, Damian Sznajder <damsznajder@gmail.com>",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "8.3.4",
     "@react-native-community/bob": "0.9.7",
+    "@release-it/conventional-changelog": "1.1.0",
     "@types/jest": "25.1.2",
     "@types/react": "16.9.19",
     "@types/react-native": "0.61.10",
@@ -38,6 +40,7 @@
     "react-native": "0.61.5",
     "react-native-testing-library": "1.12.0",
     "react-test-renderer": "16.12.0",
+    "release-it": "12.6.1",
     "typescript": "3.7.5"
   },
   "peerDependencies": {

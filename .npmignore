@@ -1,2 +1,5 @@
 Example/
 node_modules/
+.env
+.npmrc
+.release-it.js
