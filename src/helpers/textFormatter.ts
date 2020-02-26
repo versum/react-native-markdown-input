@@ -3,6 +3,8 @@ enum MarkdownSymbols {
   italic = '_',
   link = '[]()',
   heading = '#',
+  unorderedList = '- ',
+  orderedList = '1. ',
 }
 
 type Selection = { start: number; end: number };
@@ -37,6 +39,7 @@ const addBold = ({
   if (selection.start === selection.end) {
     return `${inputValue}${MarkdownSymbols.bold}${MarkdownSymbols.bold}`;
   }
+
   const [beforeSelection, selectedValue, afterSelection] = splitTextBy({
     inputValue,
     selection,
@@ -87,8 +90,14 @@ const addLink = ({
   )}${afterSelection}`;
 };
 
-const addHeading = ({ inputValue }: { inputValue: string }) => {
-  return `${MarkdownSymbols.heading}${inputValue}`;
+const addHeading = ({
+  controlName,
+  inputValue,
+}: {
+  controlName: 'heading' | 'unorderedList' | 'orderedList';
+  inputValue: string;
+}) => {
+  return `${MarkdownSymbols[controlName]}${inputValue}`;
 };
 
 const formatValue = ({
@@ -110,8 +119,10 @@ const formatValue = ({
     case 'link': {
       return addLink({ inputValue, selection });
     }
+    case 'orderedList':
+    case 'unorderedList':
     case 'heading': {
-      return addHeading({ inputValue });
+      return addHeading({ inputValue, controlName });
     }
 
     default: {
@@ -132,11 +143,16 @@ const calculateSelection = ({
       case 'bold': {
         return { start: selection.start + 2, end: selection.end + 2 };
       }
-      case 'italic': {
+      case 'italic':
+      case 'link':
+      case 'heading': {
         return { start: selection.start + 1, end: selection.end + 1 };
       }
-      case 'link': {
-        return { start: selection.start + 1, end: selection.end + 1 };
+      case 'orderedList': {
+        return { start: selection.start + 3, end: selection.end + 3 };
+      }
+      case 'unorderedList': {
+        return { start: selection.start + 2, end: selection.end + 2 };
       }
 
       default:
@@ -148,11 +164,16 @@ const calculateSelection = ({
     case 'bold': {
       return { start: selection.end + 4, end: selection.end + 4 };
     }
+    case 'unorderedList':
     case 'italic': {
       return { start: selection.end + 2, end: selection.end + 2 };
     }
+    case 'orderedList':
     case 'link': {
       return { start: selection.end + 3, end: selection.end + 3 };
+    }
+    case 'heading': {
+      return { start: selection.end + 1, end: selection.end + 1 };
     }
 
     default:
