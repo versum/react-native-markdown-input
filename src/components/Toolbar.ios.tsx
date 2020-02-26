@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputAccessoryView, ScrollView } from 'react-native';
+import { StyleSheet, InputAccessoryView, ScrollView } from 'react-native';
 
 import { ToolbarProps } from '../componentTypes';
 
@@ -11,8 +11,9 @@ const Toolbar = ({ handleItemPress }: ToolbarProps) => {
     <InputAccessoryView nativeID={inputAccessoryViewID}>
       <ScrollView
         horizontal
-        keyboardShouldPersistTaps="always"
+        keyboardShouldPersistTaps="handled"
         showsHorizontalScrollIndicator={false}
+        style={styles.container}
       >
         {CONTROLS.map(item => (
           <ToolbarItem
@@ -28,3 +29,9 @@ const Toolbar = ({ handleItemPress }: ToolbarProps) => {
 };
 
 export default Toolbar;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#eee',
+  },
+});

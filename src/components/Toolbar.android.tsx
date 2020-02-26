@@ -60,6 +60,7 @@ const Toolbar = ({ isFocused, handleItemPress }: ToolbarProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#eee',
     left: 0,
     position: 'absolute',
     right: 0,
