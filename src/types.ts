@@ -8,3 +8,11 @@ export enum MarkdownSymbols {
   unorderedList = '- ',
   orderedList = '1. ',
 }
+
+export type MarkdownSymbol =
+  | 'bold'
+  | 'italic'
+  | 'link'
+  | 'heading'
+  | 'unorderedList'
+  | 'orderedList';
