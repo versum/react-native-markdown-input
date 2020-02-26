@@ -1,25 +1,60 @@
 import React, { useState } from 'react';
-import { StyleSheet, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, View, ScrollView, TextInput, Button } from 'react-native';
+import ReactNativeMarkdownPackage from 'react-native-markdown-package';
+import { MarkdownView as ReactNativeMarkdownView } from 'react-native-markdown-view';
+import ReactNativeMarkdownRenderer from 'react-native-markdown-renderer';
+import ReactNativeSimpleMarkdown from 'react-native-simple-markdown';
 
 // @ts-ignore
 import { MarkdownInput } from 'react-native-markdown-input';
 
+const markdownPackages = [
+  {
+    packageName: 'react-native-markdown-package',
+    id: 'reactNativeMarkdownPackage',
+    component: ReactNativeMarkdownPackage,
+  },
+  {
+    id: 'reactNativeMarkdownRenderer',
+    packageName: 'react-native-markdown-renderer',
+    component: ReactNativeMarkdownRenderer,
+  },
+  {
+    id: 'reactNativeMarkdownView',
+    packageName: 'react-native-markdown-view',
+    component: ReactNativeMarkdownView,
+  },
+  {
+    id: 'reactNativeSimpleMarkdown',
+    packageName: 'react-native-simple-markdown',
+    component: ReactNativeSimpleMarkdown,
+  },
+];
+
 export default function App() {
-  const [inputValue1, setInputValue1] = useState('');
-  const [inputValue2, setInputValue2] = useState('');
+  const [inputValue, setInputValue] = useState('');
+  const [previewPackage, togglePreview] = useState(null);
 
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       keyboardShouldPersistTaps="handled"
     >
-      <MarkdownInput onChangeText={setInputValue1} value={inputValue1} />
+      <MarkdownInput onChangeText={setInputValue} value={inputValue} />
 
-      <MarkdownInput
-        inputAccessoryViewID="2"
-        onChangeText={setInputValue2}
-        value={inputValue2}
-      />
+      {markdownPackages.map(
+        ({ packageName, component: PreviewComponent, id }) => (
+          <View key={id}>
+            <Button
+              onPress={() => togglePreview(id)}
+              title={`${packageName} preview`}
+            />
+            {previewPackage === id && (
+              <PreviewComponent>{inputValue}</PreviewComponent>
+            )}
+          </View>
+        )
+      )}
 
       <TextInput
         placeholder="Different Input without accessory view"

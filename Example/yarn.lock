@@ -1129,6 +1129,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
   integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
 
+"@types/markdown-it@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@types/markdown-it/-/markdown-it-0.0.4.tgz#c5f67365916044b342dae8d702724788ba0b5b74"
+  integrity sha512-FWR7QB7EqBRq1s9BMk0ccOSOuRLfVEWYpHQYpFPaXtCoqN6dJx2ttdsdQbUxLLnAlKpYeVjveGGhQ3583TTa7g==
+
 "@types/prop-types@*":
   version "15.7.3"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
@@ -1138,6 +1143,13 @@
   version "6.9.1"
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.1.tgz#937fab3194766256ee09fcd40b781740758617e7"
   integrity sha512-lhbQXx9HKZAPgBkISrBcmAcMpZsmpe/Cd/hY7LGZS5OfkySUBItnPZHgQPssWYUET8elF+yCFBbP1Q0RZPTdaw==
+
+"@types/react-native@>=0.50.0":
+  version "0.61.17"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.61.17.tgz#5994af207c2339d498ebd8bd427c68074ce9e744"
+  integrity sha512-12qKZz/ob56lglVRAIDgqDchcyO0g5lZtrjxCTQDNJv8HFHZMcZx78+/CjKsu3LGs6KbajkZ1+0htqiaxr5JVA==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react-native@~0.60.23":
   version "0.60.31"
@@ -2105,6 +2117,11 @@ end-of-stream@^1.1.0:
   integrity sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
   dependencies:
     once "^1.4.0"
+
+entities@~1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
+  integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
 
 envinfo@^7.1.0:
   version "7.5.0"
@@ -3180,6 +3197,13 @@ levenary@^1.1.1:
   dependencies:
     leven "^3.1.0"
 
+linkify-it@^2.0.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.2.0.tgz#e3b54697e78bf915c70a38acd78fd09e0058b1cf"
+  integrity sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw==
+  dependencies:
+    uc.micro "^1.0.1"
+
 load-json-file@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-2.0.0.tgz#7947e42149af80d696cbf797bcaabcfe1fe29ca8"
@@ -3218,7 +3242,7 @@ lodash.throttle@^4.1.1:
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
-lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
+lodash@^4.15.0, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -3288,12 +3312,28 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+markdown-it@^8.4.0:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
+  integrity sha512-GcRz3AWTqSUphY3vsUqQSFMbgR38a4Lh3GWlHRh/7MRwz8mcu9n2IO7HOh+bXHrR9kOPDl5RNCaEsrneb+xhHQ==
+  dependencies:
+    argparse "^1.0.7"
+    entities "~1.1.1"
+    linkify-it "^2.0.0"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.5"
+
 md5-file@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/md5-file/-/md5-file-3.2.3.tgz#f9bceb941eca2214a4c0727f5e700314e770f06f"
   integrity sha512-3Tkp1piAHaworfcCgH0jKbTvj1jWWFgbvh2cXaNCgHwyTCBxxvD1Y04rmfpvdPm1P4oXMOpm6+2H7sr7v9v8Fw==
   dependencies:
     buffer-alloc "^1.1.0"
+
+mdurl@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
+  integrity sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=
 
 mem@^1.1.0:
   version "1.1.0"
@@ -4138,7 +4178,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4159,6 +4199,11 @@ pump@^3.0.0:
   dependencies:
     end-of-stream "^1.1.0"
     once "^1.3.1"
+
+punycode@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
+  integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
 qs@^6.5.0:
   version "6.9.1"
@@ -4198,12 +4243,71 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
+react-native-fit-image@^1.5.2:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/react-native-fit-image/-/react-native-fit-image-1.5.5.tgz#c660d1ad74b9dcaa1cba27a0d9c23837e000226c"
+  integrity sha512-Wl3Vq2DQzxgsWKuW4USfck9zS7YzhvLNPpkwUUCF90bL32e1a0zOVQ3WsJILJOwzmPdHfzZmWasiiAUNBkhNkg==
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-lightbox@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-lightbox/-/react-native-lightbox-0.7.0.tgz#e52b4d7fcc141f59d7b23f0180de535e35b20ec9"
+  integrity sha512-HS3T4WlCd0Gb3us2d6Jse5m6KjNhngnKm35Wapq30WtQa9s+/VMmtuktbGPGaWtswcDyOj6qByeJBw9W80iPCA==
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-markdown-package@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-markdown-package/-/react-native-markdown-package-1.7.0.tgz#fd7fe387aee13c3ea10b1ec1ecb187750f3cf495"
+  integrity sha512-5usLda0heNq624scMz5ISgWIMqGoU+plh7zlaI8ag6nEe/wPIx3LftTG6/zQ7cTE9jrxNFmsW/Xu1BhLvcI9nQ==
+  dependencies:
+    lodash "^4.17.15"
+    prop-types "^15.6.0"
+    react-native-lightbox "^0.7.0"
+    simple-markdown "^0.6.0"
+
+react-native-markdown-renderer@3.2.8:
+  version "3.2.8"
+  resolved "https://registry.yarnpkg.com/react-native-markdown-renderer/-/react-native-markdown-renderer-3.2.8.tgz#217046cf198eca632a65f93cdf7dd7766f718070"
+  integrity sha512-gDT5r3lwecNsEfpKagSaidEGfmCbpVcmV+HHLjaGYRALJoHkpOFni0rJZW1rCerOR9sjaUNGXE66U7BUrlEw0w==
+  dependencies:
+    "@types/markdown-it" "^0.0.4"
+    "@types/react-native" ">=0.50.0"
+    markdown-it "^8.4.0"
+    prop-types "^15.5.10"
+    react-native-fit-image "^1.5.2"
+
+react-native-markdown-view@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-markdown-view/-/react-native-markdown-view-1.1.4.tgz#390fdbe2ececa92505572efe1911ec2c7fe8bc13"
+  integrity sha512-dW4I+pqTGXBt4JRnTuo40N1u/m7P72wxqD+qwQoNzRqKNo/wP2N70Gokn3/5+u8orXK/kUbnxxLEQauF7+4tFg==
+  dependencies:
+    prop-types "^15.5.10"
+    react-native-tabular-grid-markdown-view "0.1.x"
+    simple-markdown "0.3.x"
+
 react-native-screens@2.0.0-alpha.12:
   version "2.0.0-alpha.12"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.0.0-alpha.12.tgz#35a6ef3b472958e9d35f0ca9e582d0d158f8e379"
   integrity sha512-x9M7FEdcm97bVDp3pi//nhduJHLFMrmDQs0fq299yx3kHdgHbrmhsa8jgW4HvDQhjyPE0FWADY/GrXFuPRj80w==
   dependencies:
     debounce "^1.2.0"
+
+react-native-simple-markdown@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-simple-markdown/-/react-native-simple-markdown-1.1.0.tgz#4d462f8ced26393c5230467420c61a50cc6a8095"
+  integrity sha1-TUYvjO0mOTxSMEZ0IMYaUMxqgJU=
+  dependencies:
+    lodash "^4.15.0"
+    simple-markdown "git://github.com/CharlesMangwa/simple-markdown.git"
+
+react-native-tabular-grid-markdown-view@0.1.x:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-tabular-grid-markdown-view/-/react-native-tabular-grid-markdown-view-0.1.0.tgz#d5b3c291242373aa49ac60df43a017b39fc84338"
+  integrity sha512-K1WzwmwR53sOUpekEgBv4fN8wDVqsniJAda+FUp6hVXhRQwzj2CZDIuY1skFo/IkVlF/iyrKa1TeTHEba0aHFA==
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-view-shot@3.0.2:
   version "3.0.2"
@@ -4629,6 +4733,20 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
+simple-markdown@0.3.x:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/simple-markdown/-/simple-markdown-0.3.3.tgz#a2c50114aa0aa9794cf30fb91b57965599b3ff00"
+  integrity sha512-2qx5eXuRP/2pH+I/EQYVzZ/XgGHg2IAHEfIZkrPbtfiOkSkd4Q1mswE7LG77I+TDz2eb2Vx2K/v/Ul0llFhplg==
+
+simple-markdown@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/simple-markdown/-/simple-markdown-0.6.1.tgz#220e5eb45bc57b3809a380bc89f77f71de93bb33"
+  integrity sha512-02HKXvM9J7pJWf74fuWthcgof5jF81Yndt+XcXtWnEtpp8QaX9dUAJpdAA6KWrB/rSGzrOi0PRAVy9/0bJiIZw==
+
+"simple-markdown@git://github.com/CharlesMangwa/simple-markdown.git":
+  version "0.1.1"
+  resolved "git://github.com/CharlesMangwa/simple-markdown.git#33d963c760b8196bee01b1a5ba9974bc7f669af1"
+
 simple-plist@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/simple-plist/-/simple-plist-1.1.0.tgz#8354ab63eb3922a054c78ce96c209c532e907a23"
@@ -4982,6 +5100,11 @@ ua-parser-js@^0.7.18, ua-parser-js@^0.7.19:
   version "0.7.21"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
   integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
+
+uc.micro@^1.0.1, uc.micro@^1.0.5:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
+  integrity sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
 
 uglify-es@^3.1.9:
   version "3.3.9"
