@@ -5,7 +5,7 @@ import { StyleSheet, ScrollView, TextInput } from 'react-native';
 import { MarkdownInput } from 'react-native-markdown-input';
 
 export default function App() {
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState('');
 
   return (
     <ScrollView
