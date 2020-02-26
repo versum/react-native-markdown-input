@@ -9,10 +9,4 @@ export enum MarkdownSymbols {
   orderedList = '1. ',
 }
 
-export type MarkdownSymbol =
-  | 'bold'
-  | 'italic'
-  | 'link'
-  | 'heading'
-  | 'unorderedList'
-  | 'orderedList';
+export type MarkdownSymbol = keyof typeof MarkdownSymbols;

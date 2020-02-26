@@ -11,11 +11,11 @@ export type MarkdownInputProps = TextInputProps & {
 export type ToolbarProps = {
   testID: string;
   isFocused?: boolean;
-  handleItemPress: (controlName: string) => void;
+  handleItemPress: (controlName: MarkdownSymbol) => void;
 };
 
 export type ToolbarItemProps = {
   controlName: MarkdownSymbol;
   testID: string;
-  handleItemPress: (controlName: string) => void;
+  handleItemPress: (controlName: MarkdownSymbol) => void;
 };
