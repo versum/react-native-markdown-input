@@ -5,14 +5,21 @@ import { StyleSheet, ScrollView, TextInput } from 'react-native';
 import { MarkdownInput } from 'react-native-markdown-input';
 
 export default function App() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue1, setInputValue1] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
 
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       keyboardShouldPersistTaps="handled"
     >
-      <MarkdownInput onChangeText={setInputValue} value={inputValue} />
+      <MarkdownInput onChangeText={setInputValue1} value={inputValue1} />
+
+      <MarkdownInput
+        inputAccessoryViewID="2"
+        onChangeText={setInputValue2}
+        value={inputValue2}
+      />
 
       <TextInput
         placeholder="Different Input without accessory view"
@@ -27,7 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
     flex: 1,
-    justifyContent: 'center',
+    paddingTop: 50,
   },
 
   inputWithoutAccessory: {
