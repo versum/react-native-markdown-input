@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   TextInput,
   StyleSheet,
@@ -9,7 +9,8 @@ import {
 
 import { MarkdownInputProps } from '../componentTypes';
 import textFormatter from '../helpers/textFormatter';
-//@ts-ignore
+
+// @ts-ignore
 // eslint-disable-next-line import/no-unresolved
 import Toolbar from './Toolbar';
 
@@ -47,12 +48,6 @@ const MarkdownInput = ({
     typeof onFocus === 'function' && onFocus(event);
   };
 
-  useEffect(() => {
-    inputRef.current!.setNativeProps({
-      selection: selection.current,
-    });
-  }, [value]);
-
   const handleBlur = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
     setIsFocused(false);
     typeof onBlur === 'function' && onBlur(event);
@@ -64,9 +59,15 @@ const MarkdownInput = ({
       inputValue: value,
       selection: selection.current,
     });
-    selection.current = newSelection;
 
     onChangeText(formattedValue);
+
+    setTimeout(() => {
+      selection.current = newSelection;
+      inputRef.current?.setNativeProps({
+        selection: newSelection,
+      });
+    }, 10);
   };
 
   const handleSelectionChange = ({

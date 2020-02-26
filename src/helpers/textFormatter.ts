@@ -23,6 +23,7 @@ const splitTextBy = ({
   const beforeSelection = inputValue.substring(0, selection.start);
   const selectedValue = inputValue.slice(selection.start, selection.end);
   const afterSelection = inputValue.substring(selection.end);
+
   return [beforeSelection, selectedValue, afterSelection];
 };
 
@@ -143,7 +144,20 @@ const calculateSelection = ({
     }
   }
 
-  return selection;
+  switch (controlName) {
+    case 'bold': {
+      return { start: selection.end + 4, end: selection.end + 4 };
+    }
+    case 'italic': {
+      return { start: selection.end + 2, end: selection.end + 2 };
+    }
+    case 'link': {
+      return { start: selection.end + 3, end: selection.end + 3 };
+    }
+
+    default:
+      return selection;
+  }
 };
 
 export default ({
