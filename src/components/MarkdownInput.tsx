@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import {
   TextInput,
+  Platform,
   StyleSheet,
   NativeSyntheticEvent,
   TextInputFocusEventData,
@@ -110,6 +111,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     minHeight: 100,
     width: 300,
+    ...Platform.select({
+      android: {
+        textAlignVertical: 'top',
+      },
+    }),
   },
 });
 
