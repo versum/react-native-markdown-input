@@ -7,7 +7,7 @@ module.exports = function(api) {
         'module-resolver',
         {
           alias: {
-            'react-native-markdown-input': '../src/index',
+            '@versum/react-native-markdown-input': '../src/index',
           },
         },
       ],

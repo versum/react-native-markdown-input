@@ -6,7 +6,7 @@ import ReactNativeMarkdownRenderer from 'react-native-markdown-renderer';
 import ReactNativeSimpleMarkdown from 'react-native-simple-markdown';
 
 // @ts-ignore
-import { MarkdownInput } from 'react-native-markdown-input';
+import { MarkdownInput } from '@versum/react-native-markdown-input';
 
 const markdownPackages = [
   {
