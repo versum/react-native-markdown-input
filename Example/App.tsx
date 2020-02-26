@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, ScrollView, TextInput } from 'react-native';
 
 // @ts-ignore
-import { MarkdownInput } from 'react-native-markdown-input';
+import { MarkdownInput } from '@versum/react-native-markdown-input';
 
 export default function App() {
   const [inputValue1, setInputValue1] = useState('');

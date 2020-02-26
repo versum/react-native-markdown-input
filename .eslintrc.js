@@ -9,7 +9,7 @@ module.exports = {
     react: {
       version: 'detect',
     },
-    'import/core-modules': ['react-native-markdown-input'],
+    'import/core-modules': ['@versum/react-native-markdown-input'],
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
