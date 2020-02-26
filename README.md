@@ -2,20 +2,20 @@
 
 Markdown input for React Native
 
+
+## Notes:
+If `<MarkdownInput />` is rendered in `<ScrollView />` remember to add prop `keyboardShouldPersistTaps="handled" | keyboardShouldPersistTaps="always"` to `ScrollView`
+
 ## Installation
 
 ```sh
-npm install @versum/react-native-markdown-input
+yarn add @versum/react-native-markdown-input
 ```
 
 ## Usage
 
 ```js
-import ReactNativeMarkdownInput from "@versum/react-native-markdown-input";
-
-// ...
-
-const deviceName = await ReactNativeMarkdownInput.getDeviceName();
+import MarkdownInput from "@versum/react-native-markdown-input";
 ```
 
 ## License

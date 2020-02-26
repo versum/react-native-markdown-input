@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, ScrollView, TextInput } from 'react-native';
 
 // @ts-ignore
 import { MarkdownInput } from 'react-native-markdown-input';
@@ -8,14 +8,17 @@ export default function App() {
   const [inputValue, setInputValue] = useState();
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      keyboardShouldPersistTaps="handled"
+    >
       <MarkdownInput onChangeText={setInputValue} value={inputValue} />
 
       <TextInput
         placeholder="Different Input without accessory view"
         style={styles.inputWithoutAccessory}
       />
-    </View>
+    </ScrollView>
   );
 }
 
