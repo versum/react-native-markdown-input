@@ -1,0 +1,30 @@
+name: Release;
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install
+        run: yarn install
+
+      - name: Lint
+        run: |
+          yarn lint
+          yarn typescript
+      - name: Tests
+        run: yarn test
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./scripts/release.sh ${{ secrets.GITHUB_TOKEN }}
