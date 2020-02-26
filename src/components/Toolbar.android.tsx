@@ -4,10 +4,10 @@ import { ScrollView, Keyboard, KeyboardEvent, StyleSheet } from 'react-native';
 import { ToolbarProps } from '../componentTypes';
 
 import ToolbarItem from './ToolbarItem';
-import { CONTROLS } from './MarkdownInput';
 
-const Toolbar = ({ isFocused, handleItemPress }: ToolbarProps) => {
+const Toolbar = ({ controls, isFocused, handleItemPress }: ToolbarProps) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
+
   useEffect(() => {
     const keyboardShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -44,7 +44,7 @@ const Toolbar = ({ isFocused, handleItemPress }: ToolbarProps) => {
         showsHorizontalScrollIndicator={false}
         style={[styles.container, { bottom: keyboardHeight }]}
       >
-        {CONTROLS.map(item => (
+        {controls.map(item => (
           <ToolbarItem
             controlName={item}
             handleItemPress={handleItemPress}

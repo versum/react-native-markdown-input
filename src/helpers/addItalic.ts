@@ -1,4 +1,6 @@
-import { MarkdownSymbols, Selection } from '../types';
+import { Selection } from '../types';
+import { MarkdownSymbols } from '../markdownSymbols';
+
 import splitTextBy from './splitTextBy';
 
 const addItalic = ({

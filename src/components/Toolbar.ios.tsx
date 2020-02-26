@@ -4,18 +4,17 @@ import { StyleSheet, InputAccessoryView, ScrollView } from 'react-native';
 import { ToolbarProps } from '../componentTypes';
 
 import ToolbarItem from './ToolbarItem';
-import { CONTROLS, inputAccessoryViewID } from './MarkdownInput';
 
-const Toolbar = ({ handleItemPress }: ToolbarProps) => {
+const Toolbar = ({ controls, handleItemPress, nativeID }: ToolbarProps) => {
   return (
-    <InputAccessoryView nativeID={inputAccessoryViewID}>
+    <InputAccessoryView nativeID={nativeID}>
       <ScrollView
         horizontal
         keyboardShouldPersistTaps="handled"
         showsHorizontalScrollIndicator={false}
         style={styles.container}
       >
-        {CONTROLS.map(item => (
+        {controls.map(item => (
           <ToolbarItem
             controlName={item}
             handleItemPress={handleItemPress}

@@ -6,7 +6,7 @@ import {
   waitForElement,
 } from 'react-native-testing-library';
 
-import MarkdownInput from '../components/MarkdownInput';
+import MarkdownInput from '../MarkdownInput';
 
 const selectionChangeEvent = (start, end) => ({
   nativeEvent: { selection: { start, end } },
