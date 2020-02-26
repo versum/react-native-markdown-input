@@ -15,7 +15,7 @@ import { MarkdownSymbols } from './markdownSymbols';
 
 // @ts-ignore
 // eslint-disable-next-line import/no-unresolved
-import Toolbar from './Toolbar';
+import Toolbar from './components/Toolbar';
 
 const MarkdownInput = ({
   inputAccessoryViewID = 'inputAccessoryViewID',
