@@ -580,5 +580,91 @@ describe('MarkdownInput', () => {
         // });
       });
     });
+
+    test('should add unordered list symbol when unordered list control is pressed', async () => {
+      const { getByTestId, update } = render(
+        <MarkdownInput
+          onChangeText={changeText => {
+            inputValue = changeText;
+          }}
+          testID="markdownInput"
+          value="test text"
+        />
+      );
+
+      await act(async () => {
+        fireEvent(getByTestId('markdownInputComponent'), 'focus');
+        await waitForElement(() => getByTestId('toolbar'));
+        fireEvent(
+          getByTestId('markdownInputComponent'),
+          'selectionChange',
+          selectionChangeEvent(0, 4)
+        );
+
+        fireEvent.press(getByTestId('unorderedListTouchable'));
+
+        update(
+          <MarkdownInput
+            onChangeText={changeText => {
+              inputValue = changeText;
+            }}
+            testID="markdownInput"
+            value={inputValue}
+          />
+        );
+      });
+
+      expect(getByTestId('markdownInputComponent').props.value).toEqual(
+        '- test text'
+      );
+
+      // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
+      //   start: 7,
+      //   end: 7,
+      // });
+    });
+
+    test('should add ordered list symbol when ordered list control is pressed', async () => {
+      const { getByTestId, update } = render(
+        <MarkdownInput
+          onChangeText={changeText => {
+            inputValue = changeText;
+          }}
+          testID="markdownInput"
+          value="test text"
+        />
+      );
+
+      await act(async () => {
+        fireEvent(getByTestId('markdownInputComponent'), 'focus');
+        await waitForElement(() => getByTestId('toolbar'));
+        fireEvent(
+          getByTestId('markdownInputComponent'),
+          'selectionChange',
+          selectionChangeEvent(0, 4)
+        );
+
+        fireEvent.press(getByTestId('orderedListTouchable'));
+
+        update(
+          <MarkdownInput
+            onChangeText={changeText => {
+              inputValue = changeText;
+            }}
+            testID="markdownInput"
+            value={inputValue}
+          />
+        );
+      });
+
+      expect(getByTestId('markdownInputComponent').props.value).toEqual(
+        '1. test text'
+      );
+
+      // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
+      //   start: 7,
+      //   end: 7,
+      // });
+    });
   });
 });
