@@ -14,6 +14,7 @@ import textFormatter from '../helpers/textFormatter';
 // @ts-ignore
 // eslint-disable-next-line import/no-unresolved
 import Toolbar from './Toolbar';
+import { MarkdownSymbol } from '../types';
 
 export const CONTROLS = [
   'bold',
@@ -54,7 +55,7 @@ const MarkdownInput = ({
     typeof onBlur === 'function' && onBlur(event);
   };
 
-  const handleItemPress = (controlName: string) => {
+  const handleItemPress = (controlName: MarkdownSymbol) => {
     const { formattedValue, newSelection } = textFormatter({
       controlName,
       inputValue: value,

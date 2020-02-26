@@ -1,4 +1,4 @@
-import { Selection } from '../types';
+import { MarkdownSymbol, Selection } from '../types';
 
 import addLink from './addLink';
 import addBold from './addBold';
@@ -7,7 +7,7 @@ import addPrefix from './addPrefix';
 import calculateSelection from './calculateSelection';
 
 type TextFormatterParams = {
-  controlName: string;
+  controlName: MarkdownSymbol;
   inputValue: string | undefined;
   selection: Selection;
 };
@@ -17,7 +17,7 @@ const formatValue = ({
   inputValue,
   selection,
 }: {
-  controlName: string;
+  controlName: MarkdownSymbol;
   inputValue: string;
   selection: Selection;
 }) => {

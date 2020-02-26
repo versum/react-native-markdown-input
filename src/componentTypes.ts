@@ -1,5 +1,7 @@
 import { TextInputProps } from 'react-native';
 
+import { MarkdownSymbol } from './types';
+
 export type MarkdownInputProps = TextInputProps & {
   testID?: string;
   style?: FixMe;
@@ -13,7 +15,7 @@ export type ToolbarProps = {
 };
 
 export type ToolbarItemProps = {
-  controlName: string;
+  controlName: MarkdownSymbol;
   testID: string;
   handleItemPress: (controlName: string) => void;
 };
