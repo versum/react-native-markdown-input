@@ -130,11 +130,6 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           'test text****'
         );
-
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 11,
-        //   end: 11,
-        // });
       });
 
       test('should add italic symbol when italic control is presed', async () => {
@@ -186,13 +181,9 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           'test text__'
         );
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 10,
-        //   end: 10,
-        // });
       });
 
-      test('should add link symbol on link controll press', async () => {
+      test('should add link symbol on link control press', async () => {
         const { getByTestId, update } = render(
           <MarkdownInput
             onChangeText={changeText => {
@@ -241,13 +232,9 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           'test text[]()'
         );
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 10,
-        //   end: 10,
-        // });
       });
 
-      test('should add heading symbol on heading controll press', async () => {
+      test('should add heading symbol on heading control press', async () => {
         const { getByTestId, update } = render(
           <MarkdownInput
             onChangeText={changeText => {
@@ -296,13 +283,9 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           '#test text'
         );
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 10,
-        //   end: 10,
-        // });
       });
 
-      test('should add unordered list element symbol on unordered list controll press', async () => {
+      test('should add unordered list element symbol on unordered list control press', async () => {
         const { getByTestId, update } = render(
           <MarkdownInput
             onChangeText={changeText => {
@@ -357,7 +340,7 @@ describe('MarkdownInput', () => {
         // });
       });
 
-      test('should add ordered list element symbol on ordered list controll press', async () => {
+      test('should add ordered list element symbol on ordered list control press', async () => {
         const { getByTestId, update } = render(
           <MarkdownInput
             onChangeText={changeText => {
@@ -450,11 +433,6 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           '**test** text'
         );
-
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 8,
-        //   end: 8,
-        // });
       });
 
       test('should add italic symbol when italic control is pressed', async () => {
@@ -493,10 +471,6 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           '_test_ text'
         );
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 6,
-        //   end: 6,
-        // });
       });
 
       test('should add heading symbol when heading control is pressed', async () => {
@@ -573,11 +547,6 @@ describe('MarkdownInput', () => {
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
           '[test]() text'
         );
-
-        // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-        //   start: 7,
-        //   end: 7,
-        // });
       });
     });
 
@@ -617,11 +586,6 @@ describe('MarkdownInput', () => {
       expect(getByTestId('markdownInputComponent').props.value).toEqual(
         '- test text'
       );
-
-      // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-      //   start: 7,
-      //   end: 7,
-      // });
     });
 
     test('should add ordered list symbol when ordered list control is pressed', async () => {
@@ -660,11 +624,6 @@ describe('MarkdownInput', () => {
       expect(getByTestId('markdownInputComponent').props.value).toEqual(
         '1. test text'
       );
-
-      // expect(getByTestId('markdownInputComponent').props.selection).toEqual({
-      //   start: 7,
-      //   end: 7,
-      // });
     });
   });
 });
