@@ -117,6 +117,11 @@ describe('MarkdownInput', () => {
         );
 
         act(() => {
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(9, 9)
+          );
           fireEvent.press(getByTestId('boldTouchable'));
           update(
             <MarkdownInput
@@ -168,6 +173,11 @@ describe('MarkdownInput', () => {
         );
 
         act(() => {
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(9, 9)
+          );
           fireEvent.press(getByTestId('italicTouchable'));
           update(
             <MarkdownInput
@@ -219,6 +229,11 @@ describe('MarkdownInput', () => {
         );
 
         act(() => {
+          fireEvent(
+            getByTestId('markdownInputComponent'),
+            'selectionChange',
+            selectionChangeEvent(9, 9)
+          );
           fireEvent.press(getByTestId('linkTouchable'));
           update(
             <MarkdownInput
