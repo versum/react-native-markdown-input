@@ -1,10 +1,10 @@
-import { Selection } from '../types';
+import { Selection, MarkdownSymbol } from '../types';
 
 const calculateSelection = ({
   controlName,
   selection,
 }: {
-  controlName: string;
+  controlName: MarkdownSymbol;
   selection: Selection;
 }) => {
   if (selection.start === selection.end) {
