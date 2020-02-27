@@ -23,7 +23,7 @@ describe('calculateSelection', () => {
     });
 
     test('should move cursor inside square bracket for link', () => {
-      controlName = 'link';
+      const controlName = 'link';
 
       expect(calculateSelection({ controlName, selection })).toEqual({
         start: 6,
@@ -117,16 +117,5 @@ describe('calculateSelection', () => {
         end: 12,
       });
     });
-  });
-
-  test('should return provided selection of controlName doesnt match MarkdownSymbol', () => {
-    const controlName = 'wrongControlName';
-    const selection = { start: 0, end: 0 };
-    const selectionWitText = { start: 0, end: 10 };
-
-    expect(calculateSelection({ controlName, selection })).toEqual(selection);
-    expect(
-      calculateSelection({ controlName, selection: selectionWitText })
-    ).toEqual(selectionWitText);
   });
 });
