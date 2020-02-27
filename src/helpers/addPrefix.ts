@@ -4,6 +4,7 @@ import { MarkdownSymbols } from '../markdownSymbols';
 // We prefer `↵` sign to keep consistency with input value and to have just one character for new line symbol
 const newLineChar = String.fromCharCode(10);
 const newLineRegexp = new RegExp(/\n/);
+const lastNewLineChar = new RegExp(/\n$/);
 
 const addPrefix = ({
   controlName,
@@ -37,7 +38,10 @@ const addPrefix = ({
 
     return `${valueBeforeSelection}${
       MarkdownSymbols[controlName]
-    }${lineToModify}${newLineChar}${restOfString.join(newLineChar)}`.trim();
+    }${lineToModify}${newLineChar}${restOfString.join(newLineChar)}`.replace(
+      lastNewLineChar,
+      ''
+    );
   }
 
   return `${MarkdownSymbols[controlName]}${inputValue}`;
