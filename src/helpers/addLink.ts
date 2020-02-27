@@ -10,10 +10,6 @@ const addLink = ({
   inputValue: string;
   selection: Selection;
 }) => {
-  if (selection.start === selection.end) {
-    return `${inputValue}${MarkdownSymbols.link}`;
-  }
-
   const [beforeSelection, selectedValue, afterSelection] = splitTextBy({
     inputValue,
     selection,
