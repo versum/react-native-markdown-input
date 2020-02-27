@@ -16,8 +16,8 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prepare": "bob build",
-    "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn && cd example/ios && pod install"
+    "example": "yarn --cwd Example",
+    "bootstrap": "yarn example && yarn"
   },
   "repository": "https://github.com/versum/react-native-markdown-input",
   "author": "Michal Kantor <kantorm96@gmail.com>, Damian Sznajder <damsznajder@gmail.com>",
@@ -47,7 +47,7 @@
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
+      "<rootDir>/Example/node_modules",
       "<rootDir>/lib/"
     ],
     "transformIgnorePatterns": [
