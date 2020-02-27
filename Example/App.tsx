@@ -33,7 +33,7 @@ const markdownPackages = [
 
 export default function App() {
   const [inputValue, setInputValue] = useState('');
-  const [previewPackage, togglePreview] = useState(null);
+  const [previewPackage, togglePreview] = useState('');
 
   return (
     <ScrollView
@@ -44,7 +44,7 @@ export default function App() {
 
       {markdownPackages.map(
         ({ packageName, component: PreviewComponent, id }) => (
-          <View key={id}>
+          <View key={id} style={styles.previewContainer}>
             <Button
               onPress={() => togglePreview(id)}
               title={`${packageName} preview`}
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
   },
-
   inputWithoutAccessory: {
     borderColor: 'gray',
     borderWidth: 1,
@@ -79,5 +78,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 5,
     width: 300,
+  },
+  previewContainer: {
+    marginVertical: 10,
   },
 });
