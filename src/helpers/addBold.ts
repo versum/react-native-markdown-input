@@ -10,10 +10,6 @@ const addBold = ({
   inputValue: string;
   selection: Selection;
 }) => {
-  if (selection.start === selection.end) {
-    return `${inputValue}${MarkdownSymbols.bold}${MarkdownSymbols.bold}`;
-  }
-
   const [beforeSelection, selectedValue, afterSelection] = splitTextBy({
     inputValue,
     selection,
