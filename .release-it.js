@@ -4,7 +4,7 @@ module.exports = {
     tag: true,
     tagName: 'react-native-markdown-input@${version}',
     commit: true,
-    commitMessage: 'chore(:release:): react-native-markdown-input ${version}',
+    commitMessage: 'chore(:bookmark:): react-native-markdown-input ${version}',
   },
   github: {
     release: true,

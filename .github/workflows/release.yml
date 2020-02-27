@@ -1,4 +1,4 @@
-name: Release;
+name: Release
 
 on:
   push:
@@ -15,10 +15,11 @@ jobs:
         with:
           node-version: 12.x
       - name: Install
-        run: yarn install
+        run: yarn bootstrap
 
       - name: Lint
         run: |
+
           yarn lint
           yarn typescript
       - name: Tests
