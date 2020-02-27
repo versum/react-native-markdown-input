@@ -118,4 +118,15 @@ describe('calculateSelection', () => {
       });
     });
   });
+
+  test('should return provided selection of controlName doesnt match MarkdownSymbol', () => {
+    const controlName = 'wrongControlName';
+    const selection = { start: 0, end: 0 };
+    const selectionWitText = { start: 0, end: 10 };
+
+    expect(calculateSelection({ controlName, selection })).toEqual(selection);
+    expect(
+      calculateSelection({ controlName, selection: selectionWitText })
+    ).toEqual(selectionWitText);
+  });
 });
