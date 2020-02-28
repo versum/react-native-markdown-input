@@ -5,7 +5,12 @@ import { ToolbarProps } from '../componentTypes';
 
 import ToolbarItem from './ToolbarItem';
 
-const Toolbar = ({ controls, isFocused, handleItemPress }: ToolbarProps) => {
+const Toolbar = ({
+  CustomToolbarItem,
+  controls,
+  isFocused,
+  handleItemPress,
+}: ToolbarProps) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
 
   useEffect(() => {
@@ -44,14 +49,23 @@ const Toolbar = ({ controls, isFocused, handleItemPress }: ToolbarProps) => {
         showsHorizontalScrollIndicator={false}
         style={[styles.container, { bottom: keyboardHeight }]}
       >
-        {controls.map(item => (
-          <ToolbarItem
-            controlName={item}
-            handleItemPress={handleItemPress}
-            key={item}
-            testID={`${item}Item`}
-          />
-        ))}
+        {controls.map(item =>
+          CustomToolbarItem !== undefined ? (
+            <CustomToolbarItem
+              controlName={item}
+              handleItemPress={handleItemPress}
+              key={item}
+              testID={`${item}Item`}
+            />
+          ) : (
+            <ToolbarItem
+              controlName={item}
+              handleItemPress={handleItemPress}
+              key={item}
+              testID={`${item}Item`}
+            />
+          )
+        )}
       </ScrollView>
     );
   }
