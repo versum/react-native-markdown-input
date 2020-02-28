@@ -5,7 +5,12 @@ import { ToolbarProps } from '../componentTypes';
 
 import ToolbarItem from './ToolbarItem';
 
-const Toolbar = ({ controls, handleItemPress, nativeID }: ToolbarProps) => {
+const Toolbar = ({
+  CustomToolbarItem,
+  controls,
+  handleItemPress,
+  nativeID,
+}: ToolbarProps) => {
   return (
     <InputAccessoryView nativeID={nativeID}>
       <ScrollView
@@ -14,14 +19,23 @@ const Toolbar = ({ controls, handleItemPress, nativeID }: ToolbarProps) => {
         showsHorizontalScrollIndicator={false}
         style={styles.container}
       >
-        {controls.map(item => (
-          <ToolbarItem
-            controlName={item}
-            handleItemPress={handleItemPress}
-            key={item}
-            testID={`${item}Item`}
-          />
-        ))}
+        {controls.map(item =>
+          CustomToolbarItem !== undefined ? (
+            <CustomToolbarItem
+              controlName={item}
+              handleItemPress={handleItemPress}
+              key={item}
+              testID={`${item}Item`}
+            />
+          ) : (
+            <ToolbarItem
+              controlName={item}
+              handleItemPress={handleItemPress}
+              key={item}
+              testID={`${item}Item`}
+            />
+          )
+        )}
       </ScrollView>
     </InputAccessoryView>
   );

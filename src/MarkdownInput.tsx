@@ -25,6 +25,7 @@ const MarkdownInput = ({
   style,
   testID = 'markdownInput',
   value,
+  CustomToolbarItem,
   ...restProps
 }: MarkdownInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -93,6 +94,7 @@ const MarkdownInput = ({
 
       <Toolbar
         controls={controls}
+        CustomToolbarItem={CustomToolbarItem}
         handleItemPress={handleItemPress}
         isFocused={isFocused}
         nativeID={inputAccessoryViewID}

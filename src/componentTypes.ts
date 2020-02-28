@@ -7,6 +7,7 @@ export type MarkdownInputProps = Omit<
   'onChangeText' | 'multiline'
 > & {
   onChangeText: (text: string) => void;
+  CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
 };
 
 export type ToolbarProps = {
@@ -14,6 +15,7 @@ export type ToolbarProps = {
   nativeID: string;
   testID: string;
   isFocused?: boolean;
+  CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
   handleItemPress: (controlName: MarkdownSymbol) => void;
 };
 
