@@ -36,10 +36,6 @@ const formatValue = ({
     case 'heading': {
       return addPrefix({ inputValue, controlName, selection });
     }
-
-    default: {
-      return inputValue;
-    }
   }
 };
 
