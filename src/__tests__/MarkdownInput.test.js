@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import {
   render,
   fireEvent,
@@ -56,6 +57,30 @@ describe('MarkdownInput', () => {
 
     visibleControls.forEach(control => {
       expect(queryByTestId(`${control}Item`)).not.toBeNull();
+    });
+  });
+
+  test('should be able to render custom toolbar item', () => {
+    const TestToolbarItem = ({ controlName }) => (
+      <View testID={`custom${controlName}Item`} />
+    );
+    const { queryByTestId } = render(
+      <MarkdownInput
+        CustomToolbarItem={TestToolbarItem}
+        onChangeText={jest.fn()}
+        testID="markdownInput"
+      />
+    );
+    const visibleControls = [
+      'bold',
+      'italic',
+      'link',
+      'heading',
+      'orderedList',
+      'unorderedList',
+    ];
+    visibleControls.forEach(control => {
+      expect(queryByTestId(`custom${control}Item`)).not.toBeNull();
     });
   });
 
