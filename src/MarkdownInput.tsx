@@ -62,9 +62,12 @@ const MarkdownInput = ({
 
     setTimeout(() => {
       selection.current = newSelection;
-      inputRef.current?.setNativeProps({
-        selection: newSelection,
-      });
+      // ! Selection on android basically does not work at all https://github.com/facebook/react-native/issues/26047
+      if (Platform.OS === 'ios') {
+        inputRef.current?.setNativeProps({
+          selection: newSelection,
+        });
+      }
     }, 10);
   };
 
