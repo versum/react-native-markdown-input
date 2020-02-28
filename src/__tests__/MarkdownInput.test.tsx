@@ -8,8 +8,9 @@ import {
 } from 'react-native-testing-library';
 
 import MarkdownInput from '../MarkdownInput';
+import { ToolbarItemProps } from '../componentTypes';
 
-const selectionChangeEvent = (start, end) => ({
+const selectionChangeEvent = (start: number, end: number) => ({
   nativeEvent: { selection: { start, end } },
 });
 
@@ -61,7 +62,7 @@ describe('MarkdownInput', () => {
   });
 
   test('should be able to render custom toolbar item', () => {
-    const TestToolbarItem = ({ controlName }) => (
+    const TestToolbarItem = ({ controlName }: ToolbarItemProps) => (
       <View testID={`custom${controlName}Item`} />
     );
     const { queryByTestId } = render(
@@ -101,10 +102,10 @@ describe('MarkdownInput', () => {
   });
 
   describe('On toolbar item press', () => {
-    let inputValue = undefined;
+    let inputValue = '';
 
     afterEach(() => {
-      inputValue = undefined;
+      inputValue = '';
     });
 
     describe('not selected text', () => {
