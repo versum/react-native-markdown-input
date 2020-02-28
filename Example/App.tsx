@@ -50,6 +50,7 @@ export default function App() {
               title={`${packageName} preview`}
             />
             {previewPackage === id && (
+              // @ts-ignore
               <PreviewComponent>{inputValue}</PreviewComponent>
             )}
           </View>
