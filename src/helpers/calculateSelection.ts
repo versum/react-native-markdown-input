@@ -23,9 +23,6 @@ const calculateSelection = ({
       case 'unorderedList': {
         return { start: selection.start + 2, end: selection.end + 2 };
       }
-
-      default:
-        return selection;
     }
   }
 
@@ -44,9 +41,6 @@ const calculateSelection = ({
     case 'heading': {
       return { start: selection.end + 1, end: selection.end + 1 };
     }
-
-    default:
-      return selection;
   }
 };
 
