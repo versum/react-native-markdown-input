@@ -3,22 +3,21 @@ name: MarkdownInput
 route: /src
 ---
 
-import { Playground, Props } from 'docz'
+import { Playground, Props } from 'docz';
 
-import MarkdownInput from './MarkdownInput'
+import MarkdownInput from '../src/MarkdownInput';
 
 # MarkdownInput
 
 ### Props
+
 <Props of={MarkdownInput} />
 
 ## Basic usage
 
 <Playground>
-  {
-    () => {
-      const [value, setInputValue] = React.useState('');
-      return <MarkdownInput value={value} onChangeText={setInputValue}/>
-    }
-  }
+  {() => {
+    const [value, setInputValue] = React.useState('');
+    return <MarkdownInput value={value} onChangeText={setInputValue} />;
+  }}
 </Playground>
