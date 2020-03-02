@@ -13,8 +13,6 @@ import { MarkdownInputProps } from './componentTypes';
 import { MarkdownSymbol } from './types';
 import { MarkdownSymbols } from './markdownSymbols';
 
-// @ts-ignore
-// eslint-disable-next-line import/no-unresolved
 import Toolbar from './components/Toolbar';
 
 const MarkdownInput = ({
