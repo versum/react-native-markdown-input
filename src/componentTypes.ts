@@ -2,25 +2,26 @@ import { TextInputProps } from 'react-native';
 
 import { MarkdownSymbol } from './types';
 
-export type MarkdownInputProps = Omit<
-  TextInputProps,
-  'onChangeText' | 'multiline'
-> & {
+export interface MarkdownInputProps
+  extends Omit<TextInputProps, 'onChangeText' | 'multiline'> {
+  /**
+   * A description of the prop that you seem fit :)
+   */
   onChangeText: (text: string) => void;
   CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
-};
+}
 
-export type ToolbarProps = {
+export interface ToolbarProps {
   controls: Array<MarkdownSymbol>;
   nativeID: string;
   testID: string;
   isFocused?: boolean;
   CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
   handleItemPress: (controlName: MarkdownSymbol) => void;
-};
+}
 
-export type ToolbarItemProps = {
+export interface ToolbarItemProps {
   controlName: MarkdownSymbol;
   testID: string;
   handleItemPress: (controlName: MarkdownSymbol) => void;
-};
+}
