@@ -1,7 +1,23 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { ToolbarItemProps } from '../componentTypes';
+
+import bold from '../assets/bold.png';
+import heading from '../assets/heading.png';
+import italic from '../assets/italic.png';
+import link from '../assets/link.png';
+import unorderedList from '../assets/unordered-list.png';
+import orderedList from '../assets/ordered-list.png';
+
+const iconMapping = {
+  bold,
+  heading,
+  italic,
+  link,
+  orderedList,
+  unorderedList,
+} as const;
 
 const ToolbarItem = ({ controlName, handleItemPress }: ToolbarItemProps) => {
   return (
@@ -10,17 +26,33 @@ const ToolbarItem = ({ controlName, handleItemPress }: ToolbarItemProps) => {
       style={styles.container}
       testID={`${controlName}Touchable`}
     >
-      <Text>{controlName}</Text>
+      <Image source={iconMapping[controlName]} style={styles[controlName]} />
     </TouchableOpacity>
   );
 };
 
+const icon = {
+  height: 24,
+  width: 24,
+};
+
+/* eslint-disable react-native/no-unused-styles */
 const styles = StyleSheet.create({
+  bold: icon,
   container: {
     justifyContent: 'center',
     minHeight: 48,
     paddingHorizontal: 10,
   },
+  heading: {
+    height: 20,
+    width: 20,
+  },
+  italic: icon,
+  link: icon,
+  orderedList: icon,
+  unorderedList: icon,
 });
+/* eslint-enable react-native/no-unused-styles */
 
 export default ToolbarItem;
