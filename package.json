@@ -60,7 +60,8 @@
     "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/Example/node_modules",
-      "<rootDir>/lib/"
+      "<rootDir>/lib/",
+      "<rootDir>/.docz/"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native)"
