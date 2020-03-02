@@ -62,12 +62,10 @@ const MarkdownInput = ({
 
     setTimeout(() => {
       selection.current = newSelection;
-      // ! Selection on android basically does not work at all https://github.com/facebook/react-native/issues/26047
-      if (Platform.OS === 'ios') {
-        inputRef.current?.setNativeProps({
-          selection: newSelection,
-        });
-      }
+      inputRef.current?.setNativeProps({
+        text: formattedValue,
+        selection: newSelection,
+      });
     }, 10);
   };
 
@@ -78,10 +76,15 @@ const MarkdownInput = ({
   }: NativeSyntheticEvent<TextInputSelectionChangeEventData>) => {
     selection.current = { start, end };
   };
+  const restInputProps = {
+    ...(Platform.OS === 'ios' && { value }),
+    ...restProps,
+  };
 
   return (
     <>
       <TextInput
+        {...restInputProps}
         inputAccessoryViewID={inputAccessoryViewID}
         multiline
         onBlur={handleBlur}
@@ -91,8 +94,6 @@ const MarkdownInput = ({
         ref={inputRef}
         style={style || styles.inputStyle}
         testID={`${testID}Component`}
-        value={value}
-        {...restProps}
       />
 
       <Toolbar
