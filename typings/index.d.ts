@@ -4,6 +4,6 @@ declare type Inexpressible = any;
 declare type NotWorthIt = any;
 
 declare module '*.png' {
-  const value: any;
+  const value: number;
   export default value;
 }
