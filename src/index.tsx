@@ -1,3 +1,3 @@
-export { default as MarkdownInput } from './MarkdownInput';
-export { MarkdownSymbols } from './markdownSymbols';
-export * from './componentTypes';
+export { default as MarkdownInput } from './components/MarkdownInput';
+export { MarkdownSymbols } from './helpers/markdownSymbols';
+export * from './components/componentTypes';

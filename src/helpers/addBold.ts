@@ -1,6 +1,6 @@
 import { Selection } from '../types';
-import { MarkdownSymbols } from '../markdownSymbols';
 
+import { MarkdownSymbols } from './markdownSymbols';
 import splitTextBy from './splitTextBy';
 
 const addBold = ({

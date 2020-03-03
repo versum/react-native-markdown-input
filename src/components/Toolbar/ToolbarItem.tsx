@@ -3,12 +3,12 @@ import { Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { ToolbarItemProps } from '../componentTypes';
 
-import bold from '../assets/bold.png';
-import heading from '../assets/heading.png';
-import italic from '../assets/italic.png';
-import link from '../assets/link.png';
-import unorderedList from '../assets/unordered-list.png';
-import orderedList from '../assets/ordered-list.png';
+import bold from '../../assets/bold.png';
+import heading from '../../assets/heading.png';
+import italic from '../../assets/italic.png';
+import link from '../../assets/link.png';
+import unorderedList from '../../assets/unordered-list.png';
+import orderedList from '../../assets/ordered-list.png';
 
 const iconMapping = {
   bold,

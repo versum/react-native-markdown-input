@@ -1,5 +1,6 @@
 import { Selection } from '../types';
-import { MarkdownSymbols } from '../markdownSymbols';
+
+import { MarkdownSymbols } from './markdownSymbols';
 
 // We prefer `↵` sign to keep consistency with input value and to have just one character for new line symbol
 const newLineChar = String.fromCharCode(10);

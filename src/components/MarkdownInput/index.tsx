@@ -8,12 +8,12 @@ import {
   TextInputSelectionChangeEventData,
 } from 'react-native';
 
-import textFormatter from './helpers/textFormatter';
-import { MarkdownInputProps } from './componentTypes';
-import { MarkdownSymbol } from './types';
-import { MarkdownSymbols } from './markdownSymbols';
+import textFormatter from '../../helpers/textFormatter';
+import { MarkdownSymbols } from '../../helpers/markdownSymbols';
+import { MarkdownInputProps } from '../componentTypes';
+import { MarkdownSymbol } from '../../types';
 
-import Toolbar from './components/Toolbar';
+import Toolbar from '../Toolbar';
 
 const MarkdownInput = ({
   inputAccessoryViewID = 'inputAccessoryViewID',

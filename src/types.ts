@@ -1,4 +1,4 @@
-import { MarkdownSymbols } from './markdownSymbols';
+import { MarkdownSymbols } from './helpers/markdownSymbols';
 
 export type MarkdownSymbol = keyof typeof MarkdownSymbols;
 
