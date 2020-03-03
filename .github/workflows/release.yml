@@ -10,18 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
+
       - name: Install
         run: yarn bootstrap
 
       - name: Lint
         run: |
-
           yarn lint
           yarn typescript
+
       - name: Tests
         run: yarn test
 
@@ -29,3 +32,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./scripts/release.sh ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docs
+        run: yarn docs build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
