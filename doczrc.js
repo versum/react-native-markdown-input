@@ -3,5 +3,5 @@ export default {
   typescript: true,
   base: '/react-native-markdown-input/',
   dest: './docs',
-  files: '**/*.mdx',
+  src: './src',
 };
