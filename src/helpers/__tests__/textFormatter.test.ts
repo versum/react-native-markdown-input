@@ -53,7 +53,7 @@ describe('textFormatter', () => {
       expect(
         textFormatter({ controlName, inputValue, selection: endValueSelection })
       ).toEqual({
-        formattedValue: '#test text',
+        formattedValue: '# test text',
         newSelection: { start: 10, end: 10 },
       });
       expect(
@@ -63,7 +63,7 @@ describe('textFormatter', () => {
           selection: middleValueSelection,
         })
       ).toEqual({
-        formattedValue: '#test text',
+        formattedValue: '# test text',
         newSelection: { start: 5, end: 5 },
       });
     });
@@ -189,7 +189,7 @@ describe('textFormatter', () => {
           selection: endValueSelection,
         })
       ).toEqual({
-        formattedValue: '#test text',
+        formattedValue: '# test text',
         newSelection: { start: 10, end: 10 },
       });
       expect(
@@ -199,7 +199,7 @@ describe('textFormatter', () => {
           selection: middleValueSelection,
         })
       ).toEqual({
-        formattedValue: '#test text',
+        formattedValue: '# test text',
         newSelection: { start: 5, end: 5 },
       });
     });
@@ -347,7 +347,7 @@ describe('textFormatter', () => {
           selection: startLineSelection,
         })
       ).toEqual({
-        formattedValue: 'first line\n#second line\nthird line',
+        formattedValue: 'first line\n# second line\nthird line',
         newSelection: { start: 12, end: 12 },
       });
 
@@ -358,7 +358,7 @@ describe('textFormatter', () => {
           selection: endLineSelection,
         })
       ).toEqual({
-        formattedValue: 'first line\n#second line\nthird line',
+        formattedValue: 'first line\n# second line\nthird line',
         newSelection: { start: 23, end: 23 },
       });
     });
@@ -509,7 +509,7 @@ describe('textFormatter', () => {
           selection: startLineSelection,
         })
       ).toEqual({
-        formattedValue: 'first line\n#second line\nthird line',
+        formattedValue: 'first line\n# second line\nthird line',
         newSelection: { start: 18, end: 18 },
       });
 
@@ -520,7 +520,7 @@ describe('textFormatter', () => {
           selection: twoLinesSelection,
         })
       ).toEqual({
-        formattedValue: 'first line\n#second line\nthird line',
+        formattedValue: 'first line\n# second line\nthird line',
         newSelection: { start: 29, end: 29 },
       });
     });
