@@ -1,6 +1,6 @@
 {
   "name": "@versum/react-native-markdown-input",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Markdown input for React Native",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
