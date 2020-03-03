@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "bootstrap": "yarn example && yarn",
-    "docs": "yarn docz",
+    "docs:build": "rm -rf .docz/ docs/ lib/ && yarn docz build",
+    "docs:dev": "rm -rf .docz/ docs/ && yarn docz dev",
     "example": "yarn --cwd Example",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prepare": "bob build",
