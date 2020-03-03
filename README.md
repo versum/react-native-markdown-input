@@ -6,9 +6,7 @@ Markdown input for React Native
 ## Notes:
 If `<MarkdownInput />` is rendered in `<ScrollView />` remember to add prop `keyboardShouldPersistTaps="handled" | keyboardShouldPersistTaps="always"` to `ScrollView`
 
-## Docs
-
-TODO:
+## [Docs](https://versum.github.io/react-native-markdown-input/)
 
 ## Setup
 
