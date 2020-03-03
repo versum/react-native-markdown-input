@@ -15,28 +15,28 @@ describe('addPrefix', () => {
           inputValue: oneLineValue,
           selection: withoutTextSelection,
         })
-      ).toEqual('#test text');
+      ).toEqual('# test text');
       expect(
         addPrefix({
           controlName,
           inputValue: multiLineValue,
           selection: withoutTextSelection,
         })
-      ).toEqual('#test\ntext\nvalue');
+      ).toEqual('# test\ntext\nvalue');
       expect(
         addPrefix({
           controlName,
           inputValue: multiLineValue,
           selection: withTextSelection,
         })
-      ).toEqual('test\n#text\nvalue');
+      ).toEqual('test\n# text\nvalue');
     });
 
     test('should add heading symbol at the beginning of current empty line', () => {
       const inputValue = 'test\n';
       const selection = { start: 5, end: 5 };
       expect(addPrefix({ controlName, selection, inputValue })).toEqual(
-        'test\n#'
+        'test\n# '
       );
     });
   });

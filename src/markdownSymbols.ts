@@ -2,7 +2,7 @@ export enum MarkdownSymbols {
   bold = '**',
   italic = '_',
   link = '[]()',
-  heading = '#',
+  heading = '# ',
   unorderedList = '- ',
   orderedList = '1. ',
 }

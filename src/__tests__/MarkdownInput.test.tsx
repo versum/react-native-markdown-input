@@ -324,7 +324,7 @@ describe('MarkdownInput', () => {
         });
 
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
-          '#test text'
+          '# test text'
         );
       });
 
@@ -541,7 +541,7 @@ describe('MarkdownInput', () => {
           });
 
           expect(getByTestId('markdownInputComponent').props.value).toEqual(
-            'test text\n#second line'
+            'test text\n# second line'
           );
         });
       });
@@ -658,7 +658,7 @@ describe('MarkdownInput', () => {
         });
 
         expect(getByTestId('markdownInputComponent').props.value).toEqual(
-          '#test text'
+          '# test text'
         );
       });
 
@@ -887,7 +887,7 @@ describe('MarkdownInput', () => {
           });
 
           expect(getByTestId('markdownInputComponent').props.value).toEqual(
-            'test text\n#second line'
+            'test text\n# second line'
           );
         });
       });
