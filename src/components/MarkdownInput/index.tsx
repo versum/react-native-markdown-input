@@ -9,6 +9,10 @@ import {
 } from 'react-native';
 
 import textFormatter from '../../helpers/textFormatter';
+import {
+  defaultInputAccessibilityTraits,
+  defaultToolbarAccessibilityTraits,
+} from '../../helpers/defaultAccessibilityTraits';
 import { MarkdownSymbols } from '../../helpers/markdownSymbols';
 import { MarkdownInputProps } from '../componentTypes';
 import { MarkdownSymbol } from '../../types';
@@ -24,6 +28,7 @@ const MarkdownInput = ({
   testID = 'markdownInput',
   value,
   CustomToolbarItem,
+  toolbarItemAccessibilityTraits = defaultToolbarAccessibilityTraits,
   ...restProps
 }: MarkdownInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -76,6 +81,7 @@ const MarkdownInput = ({
   };
   const restInputProps = {
     ...(Platform.OS === 'ios' && { value }),
+    ...defaultInputAccessibilityTraits,
     ...restProps,
   };
 
@@ -83,6 +89,7 @@ const MarkdownInput = ({
     <>
       <TextInput
         {...restInputProps}
+        accessible
         inputAccessoryViewID={inputAccessoryViewID}
         multiline
         onBlur={handleBlur}
@@ -101,6 +108,7 @@ const MarkdownInput = ({
         isFocused={isFocused}
         nativeID={inputAccessoryViewID}
         testID="toolbar"
+        toolbarItemAccessibilityTraits={toolbarItemAccessibilityTraits}
       />
     </>
   );

@@ -9,6 +9,7 @@ export interface MarkdownInputProps
    */
   onChangeText: (text: string) => void;
   CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
+  toolbarItemAccessibilityTraits?: ToolbarItemAccessibilityTraits;
 }
 
 export interface ToolbarProps {
@@ -18,10 +19,27 @@ export interface ToolbarProps {
   isFocused?: boolean;
   CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
   handleItemPress: (controlName: MarkdownSymbol) => void;
+  toolbarItemAccessibilityTraits?: ToolbarItemAccessibilityTraits;
 }
 
 export interface ToolbarItemProps {
   controlName: MarkdownSymbol;
   testID: string;
   handleItemPress: (controlName: MarkdownSymbol) => void;
+  accessibilityLabel: string;
+  accessibilityHint: string;
 }
+
+type AccessibilityTraits = {
+  accessibilityLabel: string;
+  accessibilityHint: string;
+};
+
+type ToolbarItemAccessibilityTraits = {
+  bold: AccessibilityTraits;
+  italic: AccessibilityTraits;
+  link: AccessibilityTraits;
+  heading: AccessibilityTraits;
+  orderedList: AccessibilityTraits;
+  unorderedList: AccessibilityTraits;
+};
