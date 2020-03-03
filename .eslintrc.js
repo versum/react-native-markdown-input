@@ -17,7 +17,11 @@ module.exports = {
     },
   },
 
-  extends: ['satya164', 'plugin:react-native/all'],
+  extends: [
+    'satya164',
+    'plugin:react-native/all',
+    'plugin:react-native-a11y/all',
+  ],
 
   rules: {
     'babel/no-unused-expressions': 'off',
