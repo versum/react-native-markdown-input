@@ -19,14 +19,27 @@ const iconMapping = {
   unorderedList,
 } as const;
 
-const ToolbarItem = ({ controlName, handleItemPress }: ToolbarItemProps) => {
+const ToolbarItem = ({
+  controlName,
+  handleItemPress,
+  accessibilityHint,
+  accessibilityLabel,
+}: ToolbarItemProps) => {
   return (
     <TouchableOpacity
+      accessibilityHint={accessibilityHint}
+      accessibilityLabel={accessibilityLabel}
+      accessible
       onPress={() => handleItemPress(controlName)}
       style={styles.container}
       testID={`${controlName}Touchable`}
     >
-      <Image source={iconMapping[controlName]} style={styles[controlName]} />
+      <Image
+        accessibilityIgnoresInvertColors
+        accessibilityRole="image"
+        source={iconMapping[controlName]}
+        style={styles[controlName]}
+      />
     </TouchableOpacity>
   );
 };
