@@ -10,6 +10,7 @@ const Toolbar = ({
   controls,
   handleItemPress,
   nativeID,
+  toolbarItemAccessibilityTraits,
 }: ToolbarProps) => {
   return (
     <InputAccessoryView nativeID={nativeID}>
@@ -19,23 +20,26 @@ const Toolbar = ({
         showsHorizontalScrollIndicator={false}
         style={styles.container}
       >
-        {controls.map(item =>
-          CustomToolbarItem !== undefined ? (
-            <CustomToolbarItem
-              controlName={item}
-              handleItemPress={handleItemPress}
-              key={item}
-              testID={`${item}Item`}
-            />
-          ) : (
-            <ToolbarItem
-              controlName={item}
-              handleItemPress={handleItemPress}
-              key={item}
-              testID={`${item}Item`}
-            />
-          )
-        )}
+        {toolbarItemAccessibilityTraits &&
+          controls.map(item =>
+            CustomToolbarItem !== undefined ? (
+              <CustomToolbarItem
+                {...toolbarItemAccessibilityTraits[item]}
+                controlName={item}
+                handleItemPress={handleItemPress}
+                key={item}
+                testID={`${item}Item`}
+              />
+            ) : (
+              <ToolbarItem
+                {...toolbarItemAccessibilityTraits[item]}
+                controlName={item}
+                handleItemPress={handleItemPress}
+                key={item}
+                testID={`${item}Item`}
+              />
+            )
+          )}
       </ScrollView>
     </InputAccessoryView>
   );
