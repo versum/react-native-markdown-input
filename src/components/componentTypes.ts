@@ -1,6 +1,6 @@
 import { TextInputProps } from 'react-native';
 
-import { MarkdownSymbol } from './types';
+import { MarkdownSymbol } from '../types';
 
 export interface MarkdownInputProps
   extends Omit<TextInputProps, 'onChangeText' | 'multiline'> {
