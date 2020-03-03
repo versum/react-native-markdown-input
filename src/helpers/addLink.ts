@@ -17,9 +17,10 @@ const addLink = ({
 
   const [openingBracket, ...rest] = MarkdownSymbols.link;
 
-  return `${beforeSelection}${openingBracket}${selectedValue}${rest.join(
+  // On web `...rest` is a string. With this guard we are sure that we pass proper value
+  return `${beforeSelection}${openingBracket}${selectedValue}${rest.join?.(
     ''
-  )}${afterSelection}`;
+  ) || rest}${afterSelection}`;
 };
 
 export default addLink;
