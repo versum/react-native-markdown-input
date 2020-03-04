@@ -37,6 +37,47 @@ describe('MarkdownInput', () => {
     expect(queryByTestId('toolbar')).not.toBeNull();
   });
 
+  test('should render toolbar with custom styles', async () => {
+    const backgroundColor = 'red';
+    const { getByTestId } = render(
+      <MarkdownInput
+        onChangeText={jest.fn()}
+        testID="markdownInput"
+        toolbarContainerStyle={{ backgroundColor }}
+      />
+    );
+
+    await act(async () => {
+      fireEvent(getByTestId('markdownInputComponent'), 'focus');
+      await waitForElement(() => getByTestId('toolbarScrollView'));
+    });
+
+    expect(
+      getByTestId('toolbarScrollView').props.style[1].backgroundColor
+    ).toEqual(backgroundColor);
+  });
+
+  test('should render toolbar with custom content container styles', async () => {
+    const backgroundColor = 'red';
+    const { getByTestId } = render(
+      <MarkdownInput
+        onChangeText={jest.fn()}
+        testID="markdownInput"
+        toolbarContentContainerStyle={{ backgroundColor }}
+      />
+    );
+
+    await act(async () => {
+      fireEvent(getByTestId('markdownInputComponent'), 'focus');
+      await waitForElement(() => getByTestId('toolbarScrollView'));
+    });
+
+    expect(
+      getByTestId('toolbarScrollView').props.contentContainerStyle
+        .backgroundColor
+    ).toEqual(backgroundColor);
+  });
+
   test('should render controls for markdown syntax', async () => {
     const { getByTestId, queryByTestId } = render(
       <MarkdownInput onChangeText={jest.fn()} testID="markdownInput" />
