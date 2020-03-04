@@ -11,7 +11,7 @@ export interface MarkdownInputProps
   CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
   toolbarItemAccessibilityTraits?: ToolbarItemAccessibilityTraits;
   toolbarContainerStyle?: StyleProp<ViewStyle>;
-  toolbarContentContainerStyle?: StyleProp<ViewStyle>;
+  toolbarStyle?: StyleProp<ViewStyle>;
 }
 
 export interface ToolbarProps {
@@ -23,7 +23,7 @@ export interface ToolbarProps {
   handleItemPress: (controlName: MarkdownSymbol) => void;
   toolbarItemAccessibilityTraits?: ToolbarItemAccessibilityTraits;
   toolbarContainerStyle?: StyleProp<ViewStyle>;
-  toolbarContentContainerStyle?: StyleProp<ViewStyle>;
+  toolbarStyle?: StyleProp<ViewStyle>;
 }
 
 export interface ToolbarItemProps {
