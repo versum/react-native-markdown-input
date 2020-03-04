@@ -28,7 +28,7 @@ const MarkdownInput = ({
   testID = 'markdownInput',
   value,
   CustomToolbarItem,
-  toolbarContentContainerStyle,
+  toolbarStyle,
   toolbarContainerStyle,
   toolbarItemAccessibilityTraits = defaultToolbarAccessibilityTraits,
   ...restProps
@@ -111,8 +111,8 @@ const MarkdownInput = ({
         nativeID={inputAccessoryViewID}
         testID="toolbar"
         toolbarContainerStyle={toolbarContainerStyle}
-        toolbarContentContainerStyle={toolbarContentContainerStyle}
         toolbarItemAccessibilityTraits={toolbarItemAccessibilityTraits}
+        toolbarStyle={toolbarStyle}
       />
     </>
   );
