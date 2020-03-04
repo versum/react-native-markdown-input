@@ -43,7 +43,7 @@ describe('MarkdownInput', () => {
       <MarkdownInput
         onChangeText={jest.fn()}
         testID="markdownInput"
-        toolbarContainerStyle={{ backgroundColor }}
+        toolbarStyle={{ backgroundColor }}
       />
     );
 
@@ -63,7 +63,7 @@ describe('MarkdownInput', () => {
       <MarkdownInput
         onChangeText={jest.fn()}
         testID="markdownInput"
-        toolbarContentContainerStyle={{ backgroundColor }}
+        toolbarContainerStyle={{ backgroundColor }}
       />
     );
 

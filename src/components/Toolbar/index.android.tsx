@@ -12,7 +12,7 @@ const Toolbar = ({
   handleItemPress,
   toolbarItemAccessibilityTraits,
   toolbarContainerStyle,
-  toolbarContentContainerStyle,
+  toolbarStyle,
 }: ToolbarProps) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
 
@@ -47,15 +47,12 @@ const Toolbar = ({
   if (keyboardHeight !== 0 && isFocused) {
     return (
       <ScrollView
-        contentContainerStyle={toolbarContentContainerStyle}
+        contentContainerStyle={toolbarContainerStyle}
         horizontal
         keyboardShouldPersistTaps="always"
         showsHorizontalScrollIndicator={false}
-        style={[
-          styles.container,
-          { bottom: keyboardHeight },
-          toolbarContainerStyle,
-        ]}
+        style={[styles.container, toolbarStyle, { bottom: keyboardHeight }]}
+        testID="toolbarScrollView"
       >
         {toolbarItemAccessibilityTraits &&
           controls.map(item =>
