@@ -11,14 +11,18 @@ const Toolbar = ({
   handleItemPress,
   nativeID,
   toolbarItemAccessibilityTraits,
+  toolbarContainerStyle,
+  toolbarContentContainerStyle,
 }: ToolbarProps) => {
   return (
     <InputAccessoryView nativeID={nativeID}>
       <ScrollView
+        contentContainerStyle={toolbarContentContainerStyle}
         horizontal
         keyboardShouldPersistTaps="handled"
         showsHorizontalScrollIndicator={false}
-        style={styles.container}
+        style={[styles.container, toolbarContainerStyle]}
+        testID="toolbarScrollView"
       >
         {toolbarItemAccessibilityTraits &&
           controls.map(item =>
