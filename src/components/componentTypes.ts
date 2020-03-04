@@ -1,4 +1,4 @@
-import { TextInputProps } from 'react-native';
+import { TextInputProps, StyleProp, ViewStyle } from 'react-native';
 
 import { MarkdownSymbol } from '../types';
 
@@ -10,6 +10,8 @@ export interface MarkdownInputProps
   onChangeText: (text: string) => void;
   CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
   toolbarItemAccessibilityTraits?: ToolbarItemAccessibilityTraits;
+  toolbarContainerStyle?: StyleProp<ViewStyle>;
+  toolbarContentContainerStyle?: StyleProp<ViewStyle>;
 }
 
 export interface ToolbarProps {
@@ -20,6 +22,8 @@ export interface ToolbarProps {
   CustomToolbarItem?: React.ComponentType<ToolbarItemProps>;
   handleItemPress: (controlName: MarkdownSymbol) => void;
   toolbarItemAccessibilityTraits?: ToolbarItemAccessibilityTraits;
+  toolbarContainerStyle?: StyleProp<ViewStyle>;
+  toolbarContentContainerStyle?: StyleProp<ViewStyle>;
 }
 
 export interface ToolbarItemProps {
