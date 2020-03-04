@@ -28,6 +28,8 @@ const MarkdownInput = ({
   testID = 'markdownInput',
   value,
   CustomToolbarItem,
+  toolbarContentContainerStyle,
+  toolbarContainerStyle,
   toolbarItemAccessibilityTraits = defaultToolbarAccessibilityTraits,
   ...restProps
 }: MarkdownInputProps) => {
@@ -108,6 +110,8 @@ const MarkdownInput = ({
         isFocused={isFocused}
         nativeID={inputAccessoryViewID}
         testID="toolbar"
+        toolbarContainerStyle={toolbarContainerStyle}
+        toolbarContentContainerStyle={toolbarContentContainerStyle}
         toolbarItemAccessibilityTraits={toolbarItemAccessibilityTraits}
       />
     </>
