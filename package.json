@@ -19,6 +19,7 @@
     "prepare": "bob build",
     "release": "release-it",
     "test": "jest --coverage --runInBand",
+    "coverage": "jest-coverage-badges './coverage/coverage-summary.json'",
     "test:watch": "jest --watch",
     "typescript": "tsc --noEmit"
   },
@@ -41,6 +42,7 @@
     "eslint-plugin-react-native-a11y": "2.0.0-rc0",
     "husky": "4.0.1",
     "jest": "25.1.0",
+    "jest-coverage-badges": "1.1.2",
     "metro-react-native-babel-preset": "0.58.0",
     "prettier": "1.19.1",
     "react": "16.9.0",
@@ -70,6 +72,11 @@
     ],
     "testPathIgnorePatterns": [
       "node_modules"
+    ],
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
     ]
   },
   "commitlint": {
