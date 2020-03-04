@@ -19,7 +19,7 @@
     "prepare": "bob build",
     "release": "release-it",
     "test": "jest --coverage --runInBand",
-    "coverage": "jest-coverage-badges './coverage/coverage-summary.json'",
+    "coverage": "jest-coverage-badges ./coverage/coverage-summary.json",
     "test:watch": "jest --watch",
     "typescript": "tsc --noEmit"
   },

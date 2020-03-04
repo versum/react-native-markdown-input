@@ -32,4 +32,6 @@ jobs:
           yarn typescript
 
       - name: Tests
-        run: yarn test
+        run: |
+          yarn test
+          yarn coverage
