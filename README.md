@@ -1,9 +1,11 @@
 # @versum/react-native-markdown-input
 
+![Master](https://github.com/versum/react-native-markdown-input/workflows/JS%20Lint%20&%20Unit/badge.svg?branch=master)
+
 Markdown input for React Native
 
-
 ## Notes:
+
 If `<MarkdownInput />` is rendered in `<ScrollView />` remember to add prop `keyboardShouldPersistTaps="handled" | keyboardShouldPersistTaps="always"` to `ScrollView`
 
 ## [Docs](https://versum.github.io/react-native-markdown-input/)
@@ -11,23 +13,26 @@ If `<MarkdownInput />` is rendered in `<ScrollView />` remember to add prop `key
 ## Setup
 
 Create or add to your `.npmrc` this line:
+
 ```
 @versum:registry=https://npm.pkg.github.com/
 ```
 
 Then you will be able to install it through `yarn`:
+
 ```bash
 yarn add @versum/react-native-markdown-input
 ```
 
 ## Usage
+
 ```js
 import { MarkdownInput } from '@versum/react-native-markdown-input';
 
 export default () => {
-  const [value, setValue] = useState('')
-  return <MarkdownInput onChangeText={setValue} value={value} />
-}
+  const [value, setValue] = useState('');
+  return <MarkdownInput onChangeText={setValue} value={value} />;
+};
 ```
 
 ## Contributing
@@ -54,13 +59,13 @@ yarn lint && yarn test
 ## Publishing:
 
 1. `yarn release <major | minor | patch | $version>`
-with proper version i.e.
+   with proper version i.e.
+
 ```
 yarn release 1.0.0
 ```
 
 2. Make PR from develop to master. Release will be handled by Github Actions
-
 
 ## License
 
