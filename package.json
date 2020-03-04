@@ -18,7 +18,7 @@
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prepare": "bob build",
     "release": "release-it",
-    "test": "jest --coverage --runInBand",
+    "test": "jest --coverage --runInBand && yarn coverage",
     "coverage": "jest-coverage-badges ./coverage/coverage-summary.json --output ./badges",
     "test:watch": "jest --watch",
     "typescript": "tsc --noEmit"
