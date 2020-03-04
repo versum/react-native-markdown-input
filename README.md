@@ -1,10 +1,10 @@
 # @versum/react-native-markdown-input
 
 ![Master](https://github.com/versum/react-native-markdown-input/workflows/JS%20Lint%20&%20Unit/badge.svg?branch=master)
-![Coverage Statements](./coverage/badge-statements.svg)
-![Coverage Statements](./coverage/badge-branches.svg)
-![Coverage Statements](./coverage/badge-functions.svg)
-![Coverage Statements](./coverage/badge-lines.svg)
+![Coverage Statements](./badges/badge-statements.svg)
+![Coverage Statements](./badges/badge-branches.svg)
+![Coverage Statements](./badges/badge-functions.svg)
+![Coverage Statements](./badges/badge-lines.svg)
 
 Markdown input for React Native
 
