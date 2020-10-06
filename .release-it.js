@@ -2,7 +2,7 @@ module.exports = {
   git: {
     requireUpstream: true,
     tag: true,
-    tagName: 'react-native-markdown-input@${version}',
+    tagName: '${version}',
     commit: true,
     commitMessage: 'chore(:bookmark:): react-native-markdown-input ${version}',
   },
