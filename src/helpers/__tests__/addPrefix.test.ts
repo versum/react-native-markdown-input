@@ -14,21 +14,21 @@ describe('addPrefix', () => {
           controlName,
           inputValue: oneLineValue,
           selection: withoutTextSelection,
-        })
+        }),
       ).toEqual('#test text');
       expect(
         addPrefix({
           controlName,
           inputValue: multiLineValue,
           selection: withoutTextSelection,
-        })
+        }),
       ).toEqual('#test\ntext\nvalue');
       expect(
         addPrefix({
           controlName,
           inputValue: multiLineValue,
           selection: withTextSelection,
-        })
+        }),
       ).toEqual('test\n#text\nvalue');
     });
 
@@ -36,7 +36,7 @@ describe('addPrefix', () => {
       const inputValue = 'test\n';
       const selection = { start: 5, end: 5 };
       expect(addPrefix({ controlName, selection, inputValue })).toEqual(
-        'test\n#'
+        'test\n#',
       );
     });
   });
@@ -49,21 +49,21 @@ describe('addPrefix', () => {
           controlName,
           inputValue: oneLineValue,
           selection: withoutTextSelection,
-        })
+        }),
       ).toEqual('1. test text');
       expect(
         addPrefix({
           controlName,
           inputValue: multiLineValue,
           selection: withoutTextSelection,
-        })
+        }),
       ).toEqual('1. test\ntext\nvalue');
       expect(
         addPrefix({
           controlName,
           inputValue: multiLineValue,
           selection: withTextSelection,
-        })
+        }),
       ).toEqual('test\n1. text\nvalue');
     });
 
@@ -71,7 +71,7 @@ describe('addPrefix', () => {
       const inputValue = 'test\n';
       const selection = { start: 5, end: 5 };
       expect(addPrefix({ controlName, selection, inputValue })).toEqual(
-        'test\n1. '
+        'test\n1. ',
       );
     });
   });
@@ -84,21 +84,21 @@ describe('addPrefix', () => {
           controlName,
           inputValue: oneLineValue,
           selection: withoutTextSelection,
-        })
+        }),
       ).toEqual('- test text');
       expect(
         addPrefix({
           controlName,
           inputValue: multiLineValue,
           selection: withoutTextSelection,
-        })
+        }),
       ).toEqual('- test\ntext\nvalue');
       expect(
         addPrefix({
           controlName,
           inputValue: multiLineValue,
           selection: withTextSelection,
-        })
+        }),
       ).toEqual('test\n- text\nvalue');
     });
 
@@ -106,7 +106,7 @@ describe('addPrefix', () => {
       const inputValue = 'test\n';
       const selection = { start: 5, end: 5 };
       expect(addPrefix({ controlName, selection, inputValue })).toEqual(
-        'test\n- '
+        'test\n- ',
       );
     });
   });

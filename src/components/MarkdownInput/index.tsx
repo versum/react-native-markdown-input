@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from 'react';
+import React, { useMemo, useState, useRef, useCallback } from 'react';
 import {
   TextInput,
   Platform,
@@ -33,59 +33,75 @@ const MarkdownInput = ({
   toolbarItemAccessibilityTraits = defaultToolbarAccessibilityTraits,
   ...restProps
 }: MarkdownInputProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const controls = useMemo(
-    () => Object.keys(MarkdownSymbols) as Array<MarkdownSymbol>,
-    []
-  );
   const inputRef = useRef<TextInput>(null);
   const selection = useRef<{ start: number; end: number }>({
     start: 0,
     end: 0,
   });
 
-  const handleFocus = (
-    event: NativeSyntheticEvent<TextInputFocusEventData>
-  ) => {
-    setIsFocused(true);
-    typeof onFocus === 'function' && onFocus(event);
-  };
+  const [isFocused, setIsFocused] = useState(false);
 
-  const handleBlur = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
-    setIsFocused(false);
-    typeof onBlur === 'function' && onBlur(event);
-  };
-
-  const handleItemPress = (controlName: MarkdownSymbol) => {
-    const { formattedValue, newSelection } = textFormatter({
-      controlName,
-      inputValue: value,
-      selection: selection.current,
-    });
-
-    onChangeText(formattedValue);
-
-    setTimeout(() => {
-      selection.current = newSelection;
-      inputRef.current?.setNativeProps({
-        text: formattedValue,
-        selection: newSelection,
-      });
-    }, 10);
-  };
-
-  const handleSelectionChange = ({
-    nativeEvent: {
-      selection: { start, end },
+  const handleFocus = useCallback(
+    (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
+      setIsFocused(true);
+      onFocus?.(event);
     },
-  }: NativeSyntheticEvent<TextInputSelectionChangeEventData>) => {
-    selection.current = { start, end };
-  };
-  const restInputProps = {
-    ...(Platform.OS === 'ios' && { value }),
-    ...defaultInputAccessibilityTraits,
-    ...restProps,
-  };
+    [onFocus],
+  );
+
+  const handleBlur = useCallback(
+    (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
+      setIsFocused(false);
+      onBlur?.(event);
+    },
+    [onBlur],
+  );
+
+  const handleItemPress = useCallback(
+    (controlName: MarkdownSymbol) => {
+      const { formattedValue, newSelection } = textFormatter({
+        controlName,
+        inputValue: value,
+        selection: selection.current,
+      });
+
+      onChangeText(formattedValue);
+
+      setTimeout(() => {
+        selection.current = newSelection;
+        inputRef.current?.setNativeProps({
+          text: formattedValue,
+          selection: newSelection,
+        });
+      }, 10);
+    },
+    [onChangeText, value],
+  );
+
+  const handleSelectionChange = useCallback(
+    ({
+      nativeEvent: {
+        selection: { start, end },
+      },
+    }: NativeSyntheticEvent<TextInputSelectionChangeEventData>) => {
+      selection.current = { start, end };
+    },
+    [],
+  );
+
+  const restInputProps = useMemo(
+    () => ({
+      ...(Platform.OS === 'ios' && { value }),
+      ...defaultInputAccessibilityTraits,
+      ...restProps,
+    }),
+    [restProps, value],
+  );
+
+  const controls = useMemo(
+    () => Object.keys(MarkdownSymbols) as Array<MarkdownSymbol>,
+    [],
+  );
 
   return (
     <>
@@ -109,10 +125,10 @@ const MarkdownInput = ({
         handleItemPress={handleItemPress}
         isFocused={isFocused}
         nativeID={inputAccessoryViewID}
-        testID="toolbar"
         toolbarContainerStyle={toolbarContainerStyle}
         toolbarItemAccessibilityTraits={toolbarItemAccessibilityTraits}
         toolbarStyle={toolbarStyle}
+        testID="toolbar"
       />
     </>
   );

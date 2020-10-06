@@ -54,7 +54,7 @@ export default function App() {
               <PreviewComponent>{inputValue}</PreviewComponent>
             )}
           </View>
-        )
+        ),
       )}
 
       <TextInput

@@ -8,24 +8,24 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "~36.0.0",
+    "expo": "^39.0.0",
     "punycode": "2.1.1",
-    "react": "~16.9.0",
-    "react-dom": "~16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
-    "react-native-markdown-package": "1.7.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.0.tar.gz",
+    "react-native-markdown-package": "1.8.0",
     "react-native-markdown-renderer": "3.2.8",
     "react-native-markdown-view": "1.1.4",
-    "react-native-screens": "2.0.0-alpha.12",
+    "react-native-screens": "~2.10.1",
     "react-native-simple-markdown": "1.1.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.13.15"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@types/react": "~16.9.0",
-    "@types/react-native": "~0.60.23",
-    "babel-preset-expo": "~8.0.0",
-    "typescript": "~3.7.3"
+    "@babel/core": "7.11.6",
+    "@types/react": "16.9.51",
+    "@types/react-native": "0.63.25",
+    "babel-preset-expo": "^8.3.0",
+    "typescript": "4.0.3"
   },
   "private": true
 }

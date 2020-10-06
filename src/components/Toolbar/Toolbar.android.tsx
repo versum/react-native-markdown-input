@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Keyboard, KeyboardEvent, StyleSheet } from 'react-native';
 
@@ -19,11 +21,11 @@ const Toolbar = ({
   useEffect(() => {
     const keyboardShowListener = Keyboard.addListener(
       'keyboardDidShow',
-      handleKeyboardShow
+      handleKeyboardShow,
     );
     const keyboardHideListener = Keyboard.addListener(
       'keyboardDidHide',
-      handleKeyboardHide
+      handleKeyboardHide,
     );
     return () => {
       keyboardShowListener.remove();
@@ -52,10 +54,9 @@ const Toolbar = ({
         keyboardShouldPersistTaps="always"
         showsHorizontalScrollIndicator={false}
         style={[styles.container, toolbarStyle, { bottom: keyboardHeight }]}
-        testID="toolbarScrollView"
       >
         {toolbarItemAccessibilityTraits &&
-          controls.map(item =>
+          controls.map((item) =>
             CustomToolbarItem !== undefined ? (
               <CustomToolbarItem
                 {...toolbarItemAccessibilityTraits[item]}
@@ -72,7 +73,7 @@ const Toolbar = ({
                 key={item}
                 testID={`${item}Item`}
               />
-            )
+            ),
           )}
       </ScrollView>
     );

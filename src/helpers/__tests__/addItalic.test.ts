@@ -8,10 +8,10 @@ describe('addItalic', () => {
       const selection = { start: 5, end: 5 };
 
       expect(addItalic({ inputValue: oneLineValue, selection })).toEqual(
-        'test __text'
+        'test __text',
       );
       expect(addItalic({ inputValue: multilineValue, selection })).toEqual(
-        'test\n__text'
+        'test\n__text',
       );
     });
   });
@@ -23,10 +23,10 @@ describe('addItalic', () => {
       const selection = { start: 5, end: 9 };
 
       expect(addItalic({ inputValue: oneLineValue, selection })).toEqual(
-        'test _text_'
+        'test _text_',
       );
       expect(addItalic({ inputValue: multilineValue, selection })).toEqual(
-        'test\n_text_'
+        'test\n_text_',
       );
     });
   });

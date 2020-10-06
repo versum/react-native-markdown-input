@@ -3,7 +3,6 @@
     "name": "React Native Markdown Input Example",
     "slug": "Example",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",

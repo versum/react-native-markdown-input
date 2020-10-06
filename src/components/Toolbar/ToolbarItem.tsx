@@ -24,6 +24,7 @@ const ToolbarItem = ({
   handleItemPress,
   accessibilityHint,
   accessibilityLabel,
+  testID,
 }: ToolbarItemProps) => {
   return (
     <TouchableOpacity
@@ -32,7 +33,7 @@ const ToolbarItem = ({
       accessible
       onPress={() => handleItemPress(controlName)}
       style={styles.container}
-      testID={`${controlName}Touchable`}
+      testID={testID}
     >
       <Image
         accessibilityIgnoresInvertColors

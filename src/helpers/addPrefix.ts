@@ -34,14 +34,14 @@ const addPrefix = ({
       valueBeforeSelection += `${line}${newLineChar}`;
     }
     const [lineToModify, ...restOfString] = splitByNewLine.slice(
-      selectedLineIndex
+      selectedLineIndex,
     );
 
     return `${valueBeforeSelection}${
       MarkdownSymbols[controlName]
     }${lineToModify}${newLineChar}${restOfString.join(newLineChar)}`.replace(
       lastNewLineChar,
-      ''
+      '',
     );
   }
 

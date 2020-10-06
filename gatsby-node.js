@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-commonjs
-exports.onCreateWebpackConfig = args => {
+exports.onCreateWebpackConfig = (args) => {
   args.actions.setWebpackConfig({
     resolve: {
       alias: {

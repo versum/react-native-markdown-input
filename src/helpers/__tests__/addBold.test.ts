@@ -8,10 +8,10 @@ describe('addBold', () => {
       const selection = { start: 5, end: 5 };
 
       expect(addBold({ inputValue: oneLineValue, selection })).toEqual(
-        'test ****text'
+        'test ****text',
       );
       expect(addBold({ inputValue: multilineValue, selection })).toEqual(
-        'test\n****text'
+        'test\n****text',
       );
     });
   });
@@ -23,10 +23,10 @@ describe('addBold', () => {
       const selection = { start: 5, end: 9 };
 
       expect(addBold({ inputValue: oneLineValue, selection })).toEqual(
-        'test **text**'
+        'test **text**',
       );
       expect(addBold({ inputValue: multilineValue, selection })).toEqual(
-        'test\n**text**'
+        'test\n**text**',
       );
     });
   });

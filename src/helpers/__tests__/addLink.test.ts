@@ -8,10 +8,10 @@ describe('addLink', () => {
       const selection = { start: 5, end: 5 };
 
       expect(addLink({ inputValue: oneLineValue, selection })).toEqual(
-        'test []()text'
+        'test []()text',
       );
       expect(addLink({ inputValue: multilineValue, selection })).toEqual(
-        'test\n[]()text'
+        'test\n[]()text',
       );
     });
   });
@@ -23,10 +23,10 @@ describe('addLink', () => {
       const selection = { start: 5, end: 9 };
 
       expect(addLink({ inputValue: oneLineValue, selection })).toEqual(
-        'test [text]()'
+        'test [text]()',
       );
       expect(addLink({ inputValue: multilineValue, selection })).toEqual(
-        'test\n[text]()'
+        'test\n[text]()',
       );
     });
   });
