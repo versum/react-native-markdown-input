@@ -3,3 +3,5 @@ node_modules/
 .env
 .npmrc
 .release-it.js
+*.md
+*.mdx
