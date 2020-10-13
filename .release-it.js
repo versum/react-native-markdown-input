@@ -1,6 +1,6 @@
 module.exports = {
   git: {
-    requireUpstream: true,
+    requireUpstream: false,
     tag: true,
     tagName: '${version}',
     commit: true,
