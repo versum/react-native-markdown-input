@@ -45,6 +45,8 @@ const ToolbarItem = ({
   );
 };
 
+export default React.memo(ToolbarItem);
+
 const icon = {
   height: 24,
   width: 24,
@@ -68,5 +70,3 @@ const styles = StyleSheet.create({
   unorderedList: icon,
 });
 /* eslint-enable react-native/no-unused-styles */
-
-export default ToolbarItem;

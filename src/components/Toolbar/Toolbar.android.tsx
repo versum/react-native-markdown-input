@@ -53,7 +53,7 @@ const Toolbar = ({
         horizontal
         keyboardShouldPersistTaps="always"
         showsHorizontalScrollIndicator={false}
-        style={[styles.container, toolbarStyle, { bottom: keyboardHeight }]}
+        style={[styles.container, { bottom: keyboardHeight }, toolbarStyle]}
       >
         {toolbarItemAccessibilityTraits &&
           controls.map((item) =>
